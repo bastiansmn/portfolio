@@ -5,8 +5,23 @@ This is my portfolio idea (September 2021)
 You can find 4 sections :
 - Home : Small landing section 
 - About : Who am I, what am I studying, ...
-- Work : My personal or university projects. All are pretty much my own thinking during the entire project.
+- Work : My personal or university projects. 
+All are pretty much my own thinking during the entire projects.
 - Contact : Everything you need to contact me.
+
+
+## Some features I added to the project :
+
+- Sync the language of the portfolio with your navigator 
+language (French if your navigator is, english else)
+- Scroll reveal animations (with Intersection observer/ScrollReveal.js)
+- Using Vanilla.js on some cards
+
+Why I didn't used router ?
+
+I find this useless to have a router in this kind of page. 
+I think it gives a better UX, and makes the portfolio 
+easier to navigate and read.
 
 
 ----------

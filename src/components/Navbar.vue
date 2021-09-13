@@ -1,5 +1,5 @@
 <template>
-   <div class="navbar">
+   <nav class="navbar">
       <div class="toggle-lang">
          <span
             :style="
@@ -8,8 +8,8 @@
                   : {  }
             "
          >EN</span>
-         <input type="checkbox" id="switch" />
-         <label for="switch" @click="switchLang"></label>
+         <input type="checkbox" :checked="!this.getLang" id="switch" />
+         <label for="switch" @click.prevent="switchLang"></label>
          <span
             :style="
                !this.getLang
@@ -20,48 +20,45 @@
       </div>
       <div class="anchor">
          <a href="#home"
-            ref="home"
-            @click="setActive('home')"
+            @click="setActive('home'); setObserver(false);"
          >{{
                this.getLang
-                  ? navbar.home.en
-                  : navbar.home.fr
+                  ? text.home.en
+                  : text.home.fr
             }}
          </a>
          <a href="#about"
-            ref="about"
-            @click="setActive('about')"
+            @click="setActive('about'); setObserver(false);"
          >{{
                this.getLang
-                     ? navbar.about.en
-                     : navbar.about.fr
+                     ? text.about.en
+                     : text.about.fr
             }}
          </a>
          <a href="#work"
-            ref="work"
-            @click="setActive('work')"
+            @click="setActive('work'); setObserver(false);"
          >{{
                this.getLang
-                     ? navbar.work.en
-                     : navbar.work.fr
+                     ? text.work.en
+                     : text.work.fr
             }}
          </a>
          <a href="#contact"
-            ref="contact"
-            @click="setActive('contact')"
+            @click="setActive('contact'); setObserver(false);"
          >{{
                this.getLang
-                     ? navbar.contact.en
-                     : navbar.contact.fr
+                     ? text.contact.en
+                     : text.contact.fr
             }}
          </a>
       </div>
-   </div>
+   </nav>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import navbar from "../assets/text.js";
+import text from "../assets/text.js";
+import setActive from "../utils/function";
 
 export default {
    name: "navbar",
@@ -70,22 +67,16 @@ export default {
          this.switchLang();
       },
 
-      setActive(anchor) {
-         document.querySelectorAll(".anchor > a")
-               .forEach(e => {
-                  e.removeAttribute('class');
-               });
-         this.$refs[anchor].classList.add("anchor_active");
-      },
+      setActive,
 
-      ...mapActions(['switchLang']),
+      ...mapActions(['switchLang', 'setObserver']),
    },
    computed: {
       ...mapGetters(['getLang']),
    },
    data() {
       return {
-         navbar
+         text,
       }
    }
 }
@@ -98,7 +89,7 @@ export default {
 
    position: fixed;
    top: 0;
-   left: 0;
+   z-index: 9999;
 
    display: flex;
    align-self: center;
@@ -174,20 +165,38 @@ span {
    position: relative;
 }
 
-.anchor a {
+.anchor > a {
    text-decoration: none;
    width: 66px;
    color: var(--dark-grey);
    font-size: 15px;
-   font-family: Lato-Bold, sans-serif;
    font-weight: bolder;
    display: flex;
    align-self: center;
    justify-content: center;
 }
 
-.anchor a.anchor_active {
+.anchor > a:hover {
    color: var(--white);
+}
+
+.anchor > a.anchor_active {
+   color: var(--white);
+   transform: scale(1.07);
+}
+
+a.anchor_active:before {
+   width: 110px;
+   height: 110px;
+   background-color: var(--white);
+   border-radius: 50%;
+   animation: anchor-shadow 0.6s ease-in-out;
+   --topix: -10px;
+   box-shadow: 0 24px 65px var(--topix) rgba(255, 255, 255, 0.3);
+   transform: translateY(-111px);
+   content: "";
+   position: absolute;
+   align-self: center;
 }
 
 /*
@@ -211,22 +220,11 @@ the hover, which isn't really nice.
 }
  */
 
-.anchor a:hover {
-   color: var(--white);
-}
 
-a.anchor_active:before {
-   width: 110px;
-   height: 110px;
-   background-color: var(--white);
-   border-radius: 50%;
-   animation: anchor-shadow 0.6s ease-in-out;
-   --topix: -10px;
-   box-shadow: 0 24px 65px var(--topix) rgba(255, 255, 255, 0.3);
-   transform: translateY(-100%);
-   content: "";
-   position: absolute;
-   align-self: center;
+.navbar__background {
+   background: rgba(25, 27, 41, 0.7);
+   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25);
+   backdrop-filter: blur(4px);
 }
 
 
