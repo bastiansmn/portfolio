@@ -2,7 +2,7 @@
    <navbar />
    <div class="portfolio__content">
       <div class="section" id="home" style="height: 110px;"></div>
-      <Home data-color="blue" />
+      <Home class="home" />
       <div id="about" class="section">
          <About />
       </div>
@@ -16,7 +16,6 @@ import Navbar from "./components/Navbar.vue";
 import Home from "./components/Home/Home.vue";
 import {mapActions, mapGetters} from "vuex";
 import setActive from "./utils/function";
-import "kursor";
 import About from "./components/About/About.vue";
 
 export default {
@@ -32,17 +31,18 @@ export default {
       const anchors = document.querySelectorAll('.section');
       const observer = new IntersectionObserver((entries) => {
          entries.forEach(entry => {
-            console.log(entry);
-            if (entry.isIntersecting && this.observerEnabled) {
-               location.hash = `#${entry.target.id}`
-               setActive(entry.target.id);
+            if (entry.isIntersecting) {
+               if (this.observerEnabled) {
+                  location.hash = `#${entry.target.id}`
+                  setActive(entry.target.id);
+               }
+               if (entry.target.id !== 'home')
+                  document.querySelector(".navbar")
+                        .classList.add("navbar__background");
+               if (entry.target.id === 'home')
+                  document.querySelector(".navbar")
+                        .classList.remove("navbar__background");
             }
-            if (entry.target.id === 'home')
-               document.querySelector(".navbar")
-                     .classList.remove("navbar__background");
-            if (entry.target.id !== 'home')
-               document.querySelector(".navbar")
-                     .classList.add("navbar__background");
          });
       }, {
          threshold: .55
@@ -70,5 +70,18 @@ export default {
 
 #about, #work, #contact {
    min-height: 700px;
+}
+
+.portfolio__content {
+   width: 100vw;
+   height: 100vh;
+
+   scroll-snap-type: y proximity;
+   overflow-y: auto;
+   overflow-x: hidden;
+}
+
+.section {
+   scroll-snap-align: start;
 }
 </style>

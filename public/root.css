@@ -46,7 +46,7 @@ body {
    width: 100vw;
    height: 100vh;
    background-color: #191B29;
-   overflow-x: hidden;
+   overflow: hidden;
 }
 
 *::-webkit-scrollbar {
@@ -169,4 +169,10 @@ a
    to {
       transform: scale(1.02);
    }
+}
+
+
+
+html {
+   overflow: hidden;
 }

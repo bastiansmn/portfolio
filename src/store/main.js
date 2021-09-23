@@ -24,7 +24,6 @@ export default createStore({
             context.commit('SET_LANG', english);
         },
         setObserver(context, enable) {
-            console.log("Enabled =", enable);
             context.commit('SET_OBSERVER', enable);
         }
     },

@@ -25,7 +25,7 @@
             </div>
          </div>
          <div class="programming__languages tilting">
-            <div v-for="lang of programming_languages"
+            <div :key="lang.classname" v-for="lang of programming_languages"
                class="language"
             >
                <span class="name">{{ lang.name }}</span>
