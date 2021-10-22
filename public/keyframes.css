@@ -1,0 +1,58 @@
+.reveal {
+	visibility: hidden;
+
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+}
+
+.section_active .reveal {
+	visibility: visible;
+}
+
+/* Keyframe to go from left to right */
+@keyframes ltr {
+	from {
+		opacity: 0;
+		transform: translateX(-60%);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* Keyframe to go from right to left */
+@keyframes rtl {
+	from {
+		opacity: 0;
+		transform: translateX(60%);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* Keyframe to go from top to bottom */
+@keyframes ttb {
+	from {
+		opacity: 0;
+		transform: translateY(60%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Keyframe to go from bottom to top */
+@keyframes btt {
+	from {
+		opacity: 0;
+		transform: translateY(-60%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
