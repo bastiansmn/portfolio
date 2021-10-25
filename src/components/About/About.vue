@@ -56,7 +56,7 @@
 import programming_languages from "../../assets/programming_languages";
 import text from "../../assets/text";
 import { mapGetters } from "vuex";
-import vanillaTilt from "https://cdn.skypack.dev/vanilla-tilt@1.7.0";
+import vanillaTilt from "vanilla-tilt";
 
 export default {
    name: "About",
@@ -168,6 +168,10 @@ export default {
    opacity: 0;
 }
 
+.progress {
+	--width: 10% !important;
+}
+
 .language:hover > .percentage {
    display: block;
    opacity: 1;
@@ -187,11 +191,10 @@ export default {
    padding: 3px;
 }
 
-.progress {
+.section_active .progress {
    height: 100%;
    background-color: var(--primary);
    border-radius: 6px;
-   width: 10%;
 
    animation: width 2s ease-in-out;
 }

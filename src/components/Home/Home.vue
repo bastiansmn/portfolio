@@ -19,13 +19,13 @@
          --ymove: -5px !important;
       "></div>
 
-      <div class="introducing from-Y-axis">
+      <div class="introducing">
          <img
-               class="avatar card tilt from-X-axis"
+               class="avatar card tilt"
                src="src/assets/avatar.jpg"
                alt="Bastian Somon"
          />
-         <div class="presentation__text from-X-axis">
+         <div class="presentation__text">
             <p>
                {{
                   this.getLang
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import vanillaTilt from "https://cdn.skypack.dev/vanilla-tilt@1.7.0";
+import vanillaTilt from "vanilla-tilt";
 import text from "../../assets/text.js";
 import {mapGetters} from "vuex";
 import ContinueButton from "./ContinueButton.vue";
@@ -64,26 +64,6 @@ export default {
    name: "Home",
    components: {ContinueButton},
    mounted() {
-      /*
-      ScrollReveal().reveal('.introducing', {
-         duration: 1500,
-         origin: 'top',
-         distance: "100px",
-         easing: "ease-in-out",
-         reset: true,
-      });
-
-      ScrollReveal().reveal('.introducing > *', {
-         delay: 100,
-         interval: 100,
-         duration: 1500,
-         origin: 'right',
-         distance: "80px",
-         easing: "ease-in-out",
-         reset: true,
-      });
-       */
-
       vanillaTilt.init(document.querySelectorAll(".tilt"), {
          max: 7,
          speed: 1000,
@@ -106,6 +86,10 @@ export default {
 </script>
 
 <style scoped>
+.section_active .presentation__text {
+	animation-name: rtl;
+}
+
 .home[data-color] {
    background: attr(data-color, red);
 }

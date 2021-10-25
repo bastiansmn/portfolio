@@ -36,13 +36,22 @@ export default {
                   location.hash = `#${entry.target.id}`
                   setActive(entry.target.id);
                }
+					if (entry.target.id === "home") {
+							document.querySelector(".home").classList.add("section_active");
+						} else {
+							entry.target.classList.add("section_active");
+						}
                if (entry.target.id !== 'home')
-                  document.querySelector(".navbar")
-                        .classList.add("navbar__background");
-               if (entry.target.id === 'home')
-                  document.querySelector(".navbar")
-                        .classList.remove("navbar__background");
-            }
+                  document.querySelector(".navbar").classList.add("navbar__background");
+               else
+                  document.querySelector(".navbar").classList.remove("navbar__background");
+            } else {
+					if (entry.target.id === "home") {
+						document.querySelector(".home").classList.remove("section_active");
+					} else {
+						entry.target.classList.remove("section_active");
+					}
+				}
          });
       }, {
          threshold: .55
@@ -76,7 +85,7 @@ export default {
    width: 100vw;
    height: 100vh;
 
-   scroll-snap-type: y proximity;
+   scroll-snap-type: y mandatory;
    overflow-y: auto;
    overflow-x: hidden;
 }
