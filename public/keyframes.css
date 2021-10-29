@@ -1,12 +1,19 @@
-.reveal {
+.reveal-rtl,
+.reveal-ltr,
+.reveal-ttb,
+.reveal-btt {
 	visibility: hidden;
 
 	animation-duration: 1s;
 	animation-timing-function: ease-in-out;
 }
 
-.section_active .reveal {
+.section_active .reveal-rtl,
+.section_active .reveal-ltr,
+.section_active .reveal-ttb,
+.section_active .reveal-btt {
 	visibility: visible;
+	animation-name: rtl;
 }
 
 /* Keyframe to go from left to right */

@@ -53,8 +53,8 @@ export default {
         }
     },
     resume: {
-        en: "Click to view my complete resume",
-        fr: "Cliquez pour voir mon CV complet"
+        en: "Watch my complete resume",
+        fr: "Voir mon CV complet"
     }
 
 }

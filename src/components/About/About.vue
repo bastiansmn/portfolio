@@ -25,18 +25,16 @@
             </div>
          </div>
          <div class="programming__languages tilting">
-            <div :key="lang.classname" v-for="lang of programming_languages"
-               class="language"
-            >
-               <span class="name">{{ lang.name }}</span>
-               <!-- <span class="percentage">{{ lang.percentage }}%</span> -->
-               <div class="bar">
-                  <div
-                        :class="'progress ' + lang.classname"
-                        :style="`--width: ${lang.percentage}%`"
-                  ></div>
-               </div>
-            </div>
+				<div class="techs">
+					<div 
+						class="tech" 
+						:key="tech.classname" 
+						v-for="tech in programming_languages"
+					>
+						<img :src="`logos/${tech.classname}.png`" class="logo" alt="">
+						<span>{{ tech.name }}</span>
+					</div>
+				</div>
 
             <div class="resume">
                <a href="">
@@ -72,18 +70,9 @@ export default {
          reset: false,
          startX: -10,
       });
+	
 
-
-      let delay = 0;
-      for (let language in this.programming_languages) {
-         const lang = this.programming_languages[language];
-         const div = document.querySelector(`.${lang.classname}`);
-         div.style.animationDelay = `${delay}ms`;
-         delay += 100;
-         setTimeout(_ => {
-            div.style.width = `${lang.percentage}%`;
-         }, 2000)
-      }
+      
    },
    data() {
       return {
@@ -97,7 +86,7 @@ export default {
 <style scoped>
 .about {
    position: relative;
-   height: 80vh;
+   min-height: 80vh;
    width: 100%;
 
    display: flex;
@@ -106,7 +95,7 @@ export default {
 }
 
 .content {
-   height: 75%;
+   height: 60vh;
    width: 80%;
 
    display: flex;
@@ -127,7 +116,7 @@ export default {
 }
 
 .programming__languages {
-   height: 78% !important;
+   height: 70% !important;
    margin-block: 10px;
    background: rgba(255, 255, 255, 0.2);
    box-shadow: 20px 20px 50px rgba(0, 0, 0, .5);
@@ -143,13 +132,29 @@ export default {
    padding: 22px;
 }
 
-.language {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
+.techs {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 95%;
+	height: 75%;
+}
 
-   width: 100%;
-   height: 22px;
+.tech {
+	flex: 50%;
+	width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+
+.tech > .logo {
+	max-width: 25px;
+	margin-right: 15px;
 }
 
 /*

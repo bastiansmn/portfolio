@@ -25,7 +25,7 @@
                src="src/assets/avatar.jpg"
                alt="Bastian Somon"
          />
-         <div class="presentation__text">
+         <div class="presentation__text reveal-rtl">
             <p>
                {{
                   this.getLang
@@ -86,14 +86,6 @@ export default {
 </script>
 
 <style scoped>
-.section_active .presentation__text {
-	animation-name: rtl;
-}
-
-.home[data-color] {
-   background: attr(data-color, red);
-}
-
 .home {
    position: relative;
    display: flex;

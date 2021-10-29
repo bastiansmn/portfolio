@@ -25,7 +25,7 @@ export default {
       Home
    },
    beforeMount() {
-      navigator.language !== "fr-FR" && this.setLang(true);
+      !"fr-FR".includes(navigator.language) && this.setLang(true);
    },
    mounted() {
       const anchors = document.querySelectorAll('.section');
@@ -84,13 +84,27 @@ export default {
 .portfolio__content {
    width: 100vw;
    height: 100vh;
-
-   scroll-snap-type: y mandatory;
+   
    overflow-y: auto;
    overflow-x: hidden;
 }
 
-.section {
-   scroll-snap-align: start;
+/* Use scoll-snap-align only in firefox */
+@-moz-document url-prefix() {
+	.portfolio__content {
+		scroll-snap-type: y mandatory;
+
+		width: 100vw;
+		height: 100vh;
+		
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	
+	.section {
+		scroll-snap-align: start;
+	}
 }
+
 </style>

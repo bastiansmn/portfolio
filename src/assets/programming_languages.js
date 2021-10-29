@@ -1,47 +1,41 @@
 export default {
     vue_js: {
         name: "Vue.JS",
-        percentage: 90,
-        classname: "vue_js",
+        classname: "vue-js",
     },
-    html_css: {
-        name: "HTML/CSS",
-        percentage: 90,
-        classname: "html_css",
-    },
-    js: {
-        name: "JavaScript",
-        percentage: 80,
-        classname: "js",
-    },
-    java: {
+	java: {
         name: "Java",
-        percentage: 80,
         classname: "java",
     },
-    c: {
+    markdown: {
+        name: "Markdown",
+        classname: "markdown",
+    },
+    git: {
+        name: "Git",
+        classname: "git",
+    },
+	c: {
         name: "C",
-        percentage: 60,
         classname: "c",
     },
     python: {
         name: "Python",
-        percentage: 60,
         classname: "python",
-    },
-    markdown: {
-        name: "Markdown",
-        percentage: 80,
-        classname: "markdown",
-    },
-    ocaml: {
+    },ocaml: {
         name: "Ocaml",
-        percentage: 10,
         classname: "ocaml"
     },
-    git: {
-        name: "Git",
-        percentage: 90,
-        classname: "git",
-    }
+	html: {
+		name: "HTML",
+		classname: "html"
+	},
+    css: {
+        name: "CSS",
+        classname: "css",
+    },
+    js: {
+        name: "JavaScript",
+        classname: "js",
+    },
 }
