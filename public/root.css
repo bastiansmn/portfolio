@@ -23,6 +23,17 @@
    src: url("/fonts/Lato/Lato-Bold.ttf");
 }
 
+h1 {
+	color: var(--primary);
+	font-size: 40px;
+	margin-block: 12px;
+}
+
+p {
+   font-size: 15px;
+   margin-block: 0;
+}
+
 
 #app {
    font-family: Lato-Regular, sans-serif;

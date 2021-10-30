@@ -8,12 +8,21 @@
 	animation-timing-function: ease-in-out;
 }
 
-.section_active .reveal-rtl,
-.section_active .reveal-ltr,
-.section_active .reveal-ttb,
-.section_active .reveal-btt {
+.section_active .reveal-rtl {
 	visibility: visible;
 	animation-name: rtl;
+}
+.section_active .reveal-btt {
+	visibility: visible;
+	animation-name: btt;
+}
+.section_active .reveal-ltr {
+	visibility: visible;
+	animation-name: ltr;
+}
+.section_active .reveal-ttb {
+	visibility: visible;
+	animation-name: ttb;
 }
 
 /* Keyframe to go from left to right */
@@ -24,7 +33,7 @@
 	}
 	to {
 		opacity: 1;
-		transform: translateX(0);
+		transform: translateX(0) !important;
 	}
 }
 
@@ -36,7 +45,7 @@
 	}
 	to {
 		opacity: 1;
-		transform: translateX(0);
+		transform: translateX(0) !important;
 	}
 }
 
@@ -44,11 +53,11 @@
 @keyframes ttb {
 	from {
 		opacity: 0;
-		transform: translateY(60%);
+		transform: rotateY(0) translateY(-60%);
 	}
 	to {
 		opacity: 1;
-		transform: translateY(0);
+		transform: rotateY(var(--rotation, 0)) translateY(0);
 	}
 }
 
@@ -56,10 +65,10 @@
 @keyframes btt {
 	from {
 		opacity: 0;
-		transform: translateY(-60%);
+		transform: rotateY(0) translateY(60%);
 	}
 	to {
 		opacity: 1;
-		transform: translateY(0);
+		transform: rotateY(var(--rotation)) translateY(0);
 	}
 }

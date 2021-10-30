@@ -18,15 +18,15 @@ export default {
 
     introducing: {
         header: {
-            fr: "Bonjour, je suis",
-            en: "Hello, I am"
+            fr: "Bonjour, je m'appelle",
+            en: "Hello, me name is"
         },
         name: {
             fr: "Bastian Somon",
             en: "Bastian Somon",
         },
         p: {
-            fr: "J'étudie l'informatique à l'Université de Paris. Je me concentre en particulier sur la programmation et les mathématiques, et j'aime pousser ma compréhension de nouvelles technologies, ou bien me confronter à des nouvelles.",
+            fr: "J'étudie l'informatique à l'Université de Paris. Je me concentre en particulier sur la programmation et les mathématiques, et j'aime pousser ma compréhension de nouvelles technologies, ou bien me confronter à de nouvelle.",
             en: "I study computer science at the University of Paris. I focus in particular on programming and mathematics, and I like to push my understanding of new technologies, or to confront myself with new ones."
         }
     },
@@ -42,19 +42,46 @@ export default {
         },
     },
 
-    who_am_i: {
+    soft_skills: {
         title: {
-            fr: "Qui suis-je ?",
-            en: "Who am I ?",
+            fr: "Mes soft skills",
+            en: "My soft skills",
         },
+		card: {
+			title: {
+				fr: "En quelques mots :",
+				en: "In a few words :"
+			},
+		},
         text: {
-            fr: "Actuellement, je suis étudiant à l'Université de Paris en train d'apprendre l'informatique. J'aime coder, m'intéresser à de nouvelles technologies, et je suis toujours à la recherche de ce qui peut me faire progresser. Un de mes points forts est surement la vitesse à laquelle je peux apprendre quelque chose de nouveau, que ce soit en informatique ou en mathématique.",
-            en: "Currently, I am a student at the University of Paris learning computer science. I enjoy coding, new technologies, and I am always on the lookout for things that can help me progress. One of my best soft skill is probably the speed with which I can learn something new, whether it's in programming or mathematics."
-        }
+            fr: "Un de mes points forts est sûrement la vitesse à laquelle je peux apprendre quelque chose de nouveau, que ce soit en informatique ou en mathématique. \n J'aime aussi résoudre des problèmes complexes. Enfin, le travail en équipe m'attire particulièrement et je sais m'adapter rapidement à des situations inhabituelles.",
+            en: "One of my best soft skill is probably the speed with which I can learn something new, wheather it's in programming or mathematics. I also like to solve complex problems. Finally, working in a team is a must have for me and I know how to adapt to unsual situations."
+        },
+		continue_button: {
+			first: {
+				fr: "Mes langages",
+				en: "My languages"
+			},
+			second: {
+				fr: "Continuer !",
+				en:	"Continue !"
+			}
+		}
     },
     resume: {
         en: "Watch my complete resume",
         fr: "Voir mon CV complet"
-    }
+    },
+
+	switcher: {
+		soft_skills: {
+			en: "Soft skills",
+			fr: "Soft skills"
+		},
+		languages: {
+			en: "Languages",
+			fr: "Langages"
+		}
+	}
 
 }

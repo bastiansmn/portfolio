@@ -145,15 +145,4 @@ export default {
 .presentation__text:first-child {
    font-size: 16px;
 }
-
-.presentation__text > h1 {
-   font-size: 40px;
-   color: var(--primary);
-   margin-block: 12px;
-}
-
-.presentation__text > p {
-   font-size: 15px;
-   margin-block: 0;
-}
 </style>

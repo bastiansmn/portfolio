@@ -6,46 +6,11 @@
       "></div>
 
       <div class="content">
-         <div class="text">
-            <div class="who_am_i">
-               <h1>
-                  {{
-                     this.getLang
-                        ? text.who_am_i.title.en
-                        : text.who_am_i.title.fr
-                  }}
-               </h1>
-               <p>
-                  {{
-                     this.getLang
-                        ? text.who_am_i.text.en
-                        : text.who_am_i.text.fr
-                  }}
-               </p>
-            </div>
-         </div>
-         <div class="programming__languages tilting">
-				<div class="techs">
-					<div 
-						class="tech" 
-						:key="tech.classname" 
-						v-for="tech in programming_languages"
-					>
-						<img :src="`logos/${tech.classname}.png`" class="logo" alt="">
-						<span>{{ tech.name }}</span>
-					</div>
-				</div>
+         
+			<SoftSkills v-if="switcher" @switch="switcher = !switcher" />
 
-            <div class="resume">
-               <a href="">
-                  {{
-                     this.getLang
-                        ? text.resume.en
-                        : text.resume.fr
-                  }}
-               </a>
-            </div>
-         </div>
+			<Languages v-else @switch="switcher = !switcher" />
+      
       </div>
    </div>
 </template>
@@ -55,9 +20,13 @@ import programming_languages from "../../assets/programming_languages";
 import text from "../../assets/text";
 import { mapGetters } from "vuex";
 import vanillaTilt from "vanilla-tilt";
+import SoftSkills from "./SoftSkills.vue";
 
 export default {
    name: "About",
+	components: {
+		SoftSkills,
+	},
    computed: {
       ...mapGetters(['getLang'])
    },
@@ -67,8 +36,7 @@ export default {
          speed: 1000,
          perspective: 700,
          reverse: true,
-         reset: false,
-         startX: -10,
+         reset: true,
       });
 	
 
@@ -77,7 +45,8 @@ export default {
    data() {
       return {
          programming_languages,
-         text
+         text,
+			switcher: true,
       }
    }
 }
@@ -100,36 +69,20 @@ export default {
 
    display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: center;	
 }
 
 .content > div {
-   width: calc(48% - 44px);
-   height: calc(100% - 44px);
+   min-width: 90%;
+   max-height: calc(100% - 44px);
 }
 
 .text {
+	height: 80%;
    display: flex;
    flex-direction: column;
    align-items: center;
-   justify-content: space-between;
-}
-
-.programming__languages {
-   height: 70% !important;
-   margin-block: 10px;
-   background: rgba(255, 255, 255, 0.2);
-   box-shadow: 20px 20px 50px rgba(0, 0, 0, .5);
-   backdrop-filter: blur(13px);
-   border-radius: 21px;
-
-   z-index: 1000;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-between;
-
-   padding: 22px;
+   padding: 30px;
 }
 
 .techs {
@@ -229,13 +182,13 @@ export default {
    transform: scale(1.03);
 }
 
-.who_am_i > h1 {
+.soft_skills > h1 {
    margin-block: 0;
    color: var(--primary);
    font-size: 40px;
 }
 
-.who_am_i > p {
+.soft_skills > p {
    font-size: 14px;
    margin-block: 20px;
 
