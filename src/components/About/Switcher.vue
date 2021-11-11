@@ -1,7 +1,7 @@
 <template>
 	<div class="switcher">
 		<span 
-			:style="!switcher && { color: '#6C6C6C' }"
+			:style="!type && { color: '#6C6C6C' }"
 			@click="switcher = !switcher; $emit('switch')"
 		>{{
 				this.getLang
@@ -10,7 +10,7 @@
 			}}</span>
 		<span>-</span>
 		<span
-			:style="switcher && { color: '#6C6C6C' }"
+			:style="type && { color: '#6C6C6C' }"
 			@click="switcher = !switcher; $emit('switch')"
 		>{{
 				this.getLang 

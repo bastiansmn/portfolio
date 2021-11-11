@@ -21,11 +21,13 @@ import text from "../../assets/text";
 import { mapGetters } from "vuex";
 import vanillaTilt from "vanilla-tilt";
 import SoftSkills from "./SoftSkills.vue";
+import Languages from "./Languages.vue";
 
 export default {
    name: "About",
 	components: {
 		SoftSkills,
+		Languages,
 	},
    computed: {
       ...mapGetters(['getLang'])
