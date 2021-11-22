@@ -1,22 +1,30 @@
 <template>
-	<div class="switcher">
-		<span 
-			:style="!type && { color: '#6C6C6C' }"
-			@click="switcher = !switcher; $emit('switch')"
-		>{{
-				this.getLang
-					? text.switcher.soft_skills.en
-					: text.switcher.soft_skills.fr
-			}}</span>
-		<span>-</span>
-		<span
-			:style="type && { color: '#6C6C6C' }"
-			@click="switcher = !switcher; $emit('switch')"
-		>{{
-				this.getLang 
-					? text.switcher.languages.en
-					: text.switcher.languages.fr
-			}}</span>
+	<div class="Switcher">
+		<div>
+			<div 
+				class="clicker"
+				:class="showSoftSkills && 'button_active'"
+				@click="!showSoftSkills && changeContent()">
+				{{
+					this.getLang 
+						? text.switcher.soft_skills.en
+						: text.switcher.soft_skills.fr
+				}}
+			</div>
+			<span> - </span>
+			<div class="clicker"
+				:class="!showSoftSkills && 'button_active'"
+				@click="showSoftSkills && changeContent()">
+				{{
+					this.getLang 
+						? text.switcher.languages.en
+						: text.switcher.languages.fr
+				}}
+			</div>
+			<span
+			 class="underline"
+			 ref="underline"></span>
+		</div>
 	</div>
 </template>
 
@@ -26,40 +34,78 @@ import text from "../../assets/text.js";
 
 export default {
 	name: "Switcher",
-	data() {
-		return {
-			switcher: true,
-			text
-		}
+	components: {
+		
 	},
 	computed: {
-		...mapGetters(['getLang'])
-	}
+		...mapGetters(["getLang"]),
+	},
+	methods: {
+		changeContent() {
+			this.$emit("change");
+			this.$refs["underline"].style.left = 
+				this.showSoftSkills
+					? "110px"
+					: "0";
+			this.$refs["underline"].style.width = "50px";
+			setTimeout(_ => {
+				this.$refs["underline"].style.width = "70px";
+			}, 400);
+			this.showSoftSkills = !this.showSoftSkills;
+		}
+	},
+	data() {
+		return {
+			showSoftSkills: true,
+			text,
+		}
+	},
 }
 </script>
 
-<style>
-.switcher {
-	height: 40px;
-	width: 100%;
+<style scoped>
+.Switcher {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 45%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.switcher > span {
-	width: 100%;
-	font-size: 20px;
-	margin-inline: 10px;
-	min-width: 10%;
-	width: 10%;
+.Switcher > div {
+	position: relative;
+	height: 36px;
+	min-width: 180px;
+	max-width: 180px;
 	display: flex;
-	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--dark-grey);
+	font-size: 17px;
+	font-weight: 500;
 }
 
-.switcher > span:nth-child(2n + 1) {
+.clicker {
 	cursor: pointer;
-	font-size: 19px;
-	min-width: 29%;
+}
+
+.clicker.button_active {
+	color: var(--white);
+	left: var(--translation);
+}
+
+.underline {
+	width: 70px;
+	height: 2px;
+	background: var(--white);
+
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	transition: all .8s ease-in-out;
 }
 </style>

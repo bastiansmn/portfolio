@@ -37,14 +37,12 @@ export default {
                   setActive(entry.target.id);
                }
 					if (entry.target.id === "home") {
-							document.querySelector(".home").classList.add("section_active");
-						} else {
-							entry.target.classList.add("section_active");
-						}
-               if (entry.target.id !== 'home')
-                  document.querySelector(".navbar").classList.add("navbar__background");
-               else
+						document.querySelector(".home").classList.add("section_active");
                   document.querySelector(".navbar").classList.remove("navbar__background");
+					} else {
+						entry.target.classList.add("section_active");
+                  document.querySelector(".navbar").classList.add("navbar__background");
+					}
             } else {
 					if (entry.target.id === "home") {
 						document.querySelector(".home").classList.remove("section_active");
@@ -105,6 +103,12 @@ export default {
 	.section {
 		scroll-snap-align: start;
 	}
+}
+
+.section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 </style>
