@@ -205,6 +205,7 @@ It's not the best choice, since it conflicts with the animation,
 and moreover, when you finished hovering, it basically remove
 the hover, which isn't really nice.
 
+
 .anchor a:not(.anchor_active):hover:before {
    width: 110px;
    height: 110px;

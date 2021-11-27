@@ -1,10 +1,67 @@
 <template>
+<!-- TODO : Améliorer le responsive de base -->
 	<div class="SoftSkills">
-		Soft skills
+		<div class="text reveal-ltr">
+			<div
+				style="margin: 10vh 50px"
+			>
+				<h1>{{
+						this.getLang 
+							? text.soft_skills.title.en
+							: text.soft_skills.title.fr
+					}}</h1>
+				<p>
+					{{
+						this.getLang
+							? text.soft_skills.text.en
+							: text.soft_skills.text.fr
+					}}
+				</p>
+			</div>
+		</div>
+		<div class="soft_skills">
+			<div class="card reveal-rtl tilting-low">
+				<div>
+					<h2 style="color: var(--primary)">
+						{{
+							this.getLang
+								? text.soft_skills.card.title.en
+								: text.soft_skills.card.title.fr
+						}}
+					</h2>
+					<ul class="list-soft_skills">
+						<li :key="e" v-for="e in soft_skills">
+							<img :src="`icons/${e.name}.png`" :alt="e.name">
+							<span>
+								{{
+									this.getLang 
+										? e.en
+										: e.fr
+								}}
+							</span>
+						</li>
+						<li>
+							<!-- TODO : Lien vers le CV -->
+							<a href="">
+								{{
+									this.getLang
+										? text.resume.en
+										: text.resume.fr
+								}}
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import text from "../../assets/text.js";
+import soft_skills from "../../assets/soft_skills.js";
+import vanillaTilt from "vanilla-tilt";
 
 export default {
 	name: "SoftSkills",
@@ -14,16 +71,129 @@ export default {
 	methods: {
 		
 	},
+	computed: {
+		...mapGetters(["getLang"]),
+	},	
 	data() {
 		return {
-			
+			text,
+			soft_skills,
 		}
+	},
+	mounted() {
+		vanillaTilt.init(document.querySelectorAll(".tilting-low"), {
+         max: 3,
+         speed: 1000,
+         perspective: 700,
+         reverse: true,
+         reset: false,
+         startX: -4,
+         startY: 0,
+      });
 	},
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .SoftSkills {
-	
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+
+	& > div {
+		width: 45%;
+		height: 100%;
+	}
 }
+
+.soft_skills {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card {
+	height: 80%;
+	width: 90%;
+	background: var(--glass);
+	border-radius: 10px;
+	
+	box-shadow: 20px 20px 50px rgba(0, 0, 0, .5);
+
+	& > div {
+		margin: 40px;
+		height: calc(100% - 80px);	
+	}
+}
+
+.list-soft_skills {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	height: calc(100% - 50px);
+
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	flex-direction: column;
+
+	& > li:not(:last-child) {
+		width: 100%;
+		height: 45px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		padding-inline: 10px;
+		background: none;
+		border-radius: 7px;
+		transition: background .2s ease-out;
+
+		// &:hover {
+		// 	background: var(--primary);
+		// }
+	}
+
+	& > li > img {
+		height: 65%;
+		aspect-ratio: 1;
+		margin-right: 20px;
+	}
+
+	& > li > span {
+		font-size: 16px;
+	}
+
+	& > li:last-child {
+		width: 100%;
+		height: 35px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		& > a {
+			height: 100%;
+			width: 50%;
+			background: var(--primary);
+			text-decoration: none;
+			color: var(--white);
+			border-radius: 4px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:hover {
+				transform: scale(1.02);
+				background: var(--white);
+				color: var(--primary);
+			}
+		}
+	}
+}
+
 </style>

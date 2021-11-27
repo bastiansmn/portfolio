@@ -21,7 +21,7 @@
 
       <div class="introducing">
          <img
-               class="avatar card tilt"
+               class="avatar card tilting"
                src="src/assets/avatar.jpg"
                alt="Bastian Somon"
          />
@@ -50,29 +50,35 @@
          </div>
       </div>
 
-      <ContinueButton />
+      <ContinueButton class="continue" :link="'#about'">
+			<div>
+            {{
+               this.getLang
+                  ? text.continue_button.first.en
+                  : text.continue_button.first.fr
+            }}
+         </div>
+         <div>
+            {{
+               this.getLang
+                     ? text.continue_button.second.en
+                     : text.continue_button.second.fr
+            }}
+         </div>
+		</ContinueButton>
    </div>
 </template>
 
 <script>
-import vanillaTilt from "vanilla-tilt";
 import text from "../../assets/text.js";
 import {mapGetters} from "vuex";
-import ContinueButton from "./ContinueButton.vue";
+import ContinueButton from "../utils/ContinueButton.vue";
 
 export default {
    name: "Home",
    components: {ContinueButton},
    mounted() {
-      vanillaTilt.init(document.querySelectorAll(".tilt"), {
-         max: 7,
-         speed: 1000,
-         perspective: 700,
-         reverse: true,
-         reset: false,
-         startX: 7,
-         startY: -5,
-      });
+		
    },
    computed: {
       ...mapGetters(['getLang'])
@@ -144,5 +150,10 @@ export default {
 
 .presentation__text:first-child {
    font-size: 16px;
+}
+
+.continue {
+   position: absolute;
+   bottom: 7%;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
 	<div class="Switcher">
-		<div>
+		<div
+			class="buttons">
 			<div 
 				class="clicker"
 				:class="showSoftSkills && 'button_active'"
@@ -21,9 +22,29 @@
 						: text.switcher.languages.fr
 				}}
 			</div>
-			<span
-			 class="underline"
-			 ref="underline"></span>
+		</div>
+		<span
+		 	class="underline"
+		 	ref="underline"></span>
+		<div class="continue">
+			<ContinueButton
+				:link="'#work'"	
+			>
+				<div>
+					{{
+						this.getLang
+							? text.soft_skills.continue_button.first.en
+							: text.soft_skills.continue_button.first.fr
+					}}
+				</div>
+				<div>
+					{{
+						this.getLang
+								? text.soft_skills.continue_button.second.en
+								: text.soft_skills.continue_button.second.fr
+					}}
+				</div>
+			</ContinueButton>	
 		</div>
 	</div>
 </template>
@@ -31,11 +52,12 @@
 <script>
 import { mapGetters } from 'vuex';
 import text from "../../assets/text.js";
+import ContinueButton from "../utils/ContinueButton.vue";
 
 export default {
 	name: "Switcher",
 	components: {
-		
+		ContinueButton
 	},
 	computed: {
 		...mapGetters(["getLang"]),
@@ -43,10 +65,10 @@ export default {
 	methods: {
 		changeContent() {
 			this.$emit("change");
-			this.$refs["underline"].style.left = 
+			this.$refs["underline"].style.transform = 
 				this.showSoftSkills
-					? "110px"
-					: "0";
+					? "translateX(55px)"
+					: "translateX(-55px)";
 			this.$refs["underline"].style.width = "50px";
 			setTimeout(_ => {
 				this.$refs["underline"].style.width = "70px";
@@ -70,12 +92,13 @@ export default {
 	left: 0;
 	width: 45%;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 }
 
-.Switcher > div {
-	position: relative;
+
+.buttons {
 	height: 36px;
 	min-width: 180px;
 	max-width: 180px;
@@ -100,12 +123,10 @@ export default {
 .underline {
 	width: 70px;
 	height: 2px;
+	transform: translateX(-55px);
+	transform-origin: center;
 	background: var(--white);
-
-	position: absolute;
-	bottom: 0;
-	left: 0;
-
 	transition: all .8s ease-in-out;
+	margin-bottom: 4vh;
 }
 </style>

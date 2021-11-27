@@ -1,33 +1,56 @@
 <template>
-   <div class="about">
-      <div class="bubble blue-gradient __big" style="
-         right: -150px;
-         top: 146px;
-      "></div>
-
-		<!-- TODO : Transformer les composants dans des slots -->
          
+	<!-- Bubbles -->
+	<div class="bubble blue-gradient __medium" style="
+      left: -10px;
+      bottom: 100px;
+      --xmove: -10px !important;
+      --ymove: -5px !important;
+   "></div>
+	<div class="bubble white-gradient __small" style="
+      left: 130px;
+      bottom: 100px;
+      --xmove: 7px !important;
+      --ymove: 2px !important;
+   "></div>
+	<div class="bubble white-gradient __big" style="
+      right: -150px;
+      top: 110px;
+      --xmove: -10px !important;
+      --ymove: -5px !important;
+   "></div>
+	<div class="bubble blue-gradient __small" style="
+      right: 100px;
+      top: 410px;
+      --xmove: -10px !important;
+      --ymove: -5px !important;
+   "></div>
+	<div class="bubble white-gradient __small" style="
+      left: 100px;
+      top: 50px;
+      --xmove: -10px !important;
+      --ymove: -5px !important;
+   "></div>
+	
+
+
+   <div class="about">
 		<AboutSlot>
 			<template v-slot:content>
-				<!-- "SoftSkills" si true, "Languages" sinon -->
 				<SoftSkills v-if="showSoftSkills" />
 				<Languages v-else />
 			</template>
 			<template v-slot:switcher>
-				<!-- Switcher avec le comportement attendu -->
 				<Switcher 
 					@change="showSoftSkills = !showSoftSkills" />
 			</template>
 		</AboutSlot>
-	   
    </div>
 </template>
 
 <script>
-import programming_languages from "../../assets/programming_languages";
 import text from "../../assets/text";
 import { mapGetters } from "vuex";
-import vanillaTilt from "vanilla-tilt";
 import AboutSlot from "./AboutSlot.vue";
 import Switcher from "./Switcher.vue";
 import Languages from "./Languages.vue";
@@ -45,20 +68,13 @@ export default {
       ...mapGetters(['getLang'])
    },
    mounted() {
-      vanillaTilt.init(document.querySelectorAll(".tilting"), {
-         max: 2,
-         speed: 1000,
-         perspective: 700,
-         reverse: true,
-         reset: true,
-      });
+      
    },
 	methods: {
 		
 	},
    data() {
       return {
-         programming_languages,
          text,
 			showSoftSkills: true,
       }

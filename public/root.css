@@ -30,8 +30,9 @@ h1 {
 }
 
 p {
-   font-size: 15px;
-   margin-block: 0;
+   font-size: 17px;
+   margin-block: 5px;
+	text-indent: 10px;
 }
 
 
@@ -68,20 +69,10 @@ body {
 }
 
 * {
-   transition: all 0.5s ease-in-out;
+   transition: all 0.4s ease-in-out;
    scroll-behavior: smooth;
    scroll-margin-top: 110px;
-   /*cursor: url("cursor.png") 18 18, default !important;*/
 }
-/*
-.continue,
-.continue *,
-label,
-a
-{
-   cursor: url("cursor-primary.png") 18 18, default !important;
-}
- */
 
 .glass__effect {
    background: rgba(139, 101, 101, .1);
@@ -98,14 +89,6 @@ a
 ::-moz-selection {
    background-color: var(--primary);
    color: var(--white);
-}
-
-@keyframes revealX {
-   
-}
-
-@keyframes revealY {
-   
 }
 
 
@@ -154,6 +137,7 @@ a
    width: 174px;
    height: 174px;
    filter: blur(4px);
+   opacity: .9;
    animation-duration: 1.5s;
 
    --xmove: -4px;

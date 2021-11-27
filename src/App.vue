@@ -6,23 +6,28 @@
       <div id="about" class="section">
          <About />
       </div>
-      <div id="work" class="section"></div>
+      <div id="work" class="section">
+			<Work />
+		</div>
       <div id="contact" class="section"></div>
    </div>
 </template>
 
 <script>
+import vanillaTilt from "vanilla-tilt";
 import Navbar from "./components/Navbar.vue";
 import Home from "./components/Home/Home.vue";
 import {mapActions, mapGetters} from "vuex";
 import setActive from "./utils/function";
 import About from "./components/About/About.vue";
+import Work from "./components/Work/Work.vue";
 
 export default {
    components: {
       About,
       Navbar,
-      Home
+      Home,
+		Work,
    },
    beforeMount() {
       !"fr-FR".includes(navigator.language) && this.setLang(true);
@@ -58,11 +63,32 @@ export default {
          observer.observe(anchor)
       });
 
+// TODO : Vérifier si tout fonctionne bien avec une souris
       window.addEventListener("mousewheel", _ => {
          this.setObserver(true);
       });
+		window.addEventListener("DOMMouseScroll", _ => {
+			this.setObserver(true);
+		})
 
-
+		vanillaTilt.init(document.querySelectorAll(".tilting"), {
+         max: 7,
+         speed: 1000,
+         perspective: 700,
+         reverse: true,
+         reset: false,
+         startX: 7,
+         startY: -5,
+      });
+		vanillaTilt.init(document.querySelectorAll(".tilting-low"), {
+         max: 3,
+         speed: 1000,
+         perspective: 700,
+         reverse: true,
+         reset: false,
+         startX: -4,
+         startY: 0,
+      });
    },
    computed: {
       ...mapGetters(['observerEnabled'])
@@ -109,6 +135,8 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	position: relative;
 }
 
 </style>

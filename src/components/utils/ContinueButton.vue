@@ -1,45 +1,38 @@
 <template>
    <a
          class="continue"
-         href="#about"
+         :href="link"
          @click="setActive('about')"
    >
       <div class="arrow">
          <div class="background"></div>
       </div>
-      <VerticalTextAnimation>
-         <div class="text-inside first">
-            {{
-               this.getLang
-                  ? text.continue_button.first.en
-                  : text.continue_button.first.fr
-            }}
-         </div>
-         <div class="text-inside second">
-            {{
-               this.getLang
-                     ? text.continue_button.second.en
-                     : text.continue_button.second.fr
-            }}
-         </div>
-      </VerticalTextAnimation>
+      <VerticalScrollAnimation>
+         <slot />
+      </VerticalScrollAnimation>
    </a>
 </template>
 
 <script>
-import text from "../../assets/text";
-import VerticalTextAnimation from "./VerticalScrollAnimation.vue";
-import setActive from "../../utils/function";
+import text from "../../assets/text.js";
+import VerticalScrollAnimation from "./VerticalScrollAnimation.vue";
+import setActive from "../../utils/function.js";
 import {mapGetters} from "vuex";
 
 export default {
    name: "ContinueButton",
-   components: {VerticalTextAnimation},
+   components: {VerticalScrollAnimation},
    data() {
       return {
          text
       }
    },
+	props: {
+		link: {
+			type: String,
+			required: true
+		}
+	},
    computed: {
       ...mapGetters(['getLang'])
    },
@@ -51,14 +44,13 @@ export default {
 
 <style scoped>
 .continue {
-   position: absolute;
-   bottom: 7%;
-   padding: 1px;
    cursor: pointer;
    display: flex;
    align-items: center;
    justify-content: space-between;
    height: 29px;
+	color: var(--white);
+	text-decoration: none;
 }
 
 .arrow {
@@ -112,62 +104,4 @@ export default {
    background-color: var(--white);
 }
 
-.text-inside {
-   height: 29px;
-   width: 120px;
-
-   display: flex;
-   align-items: center;
-   justify-content: flex-start;
-}
-
-a {
-   color: var(--white);
-   text-decoration: none;
-}
-
-.text-inside.first {
-   animation: first-text-opacity 8s infinite ease-in-out;
-}
-
-.text-inside.second {
-   animation: second-text-opacity 8s infinite ease-in-out;
-}
-
-
-@keyframes first-text-opacity {
-   0% {
-      opacity: 1;
-   }
-   25% {
-      opacity: 1;
-   }
-   50% {
-      opacity: 0;
-   }
-   75% {
-      opacity: 0;
-   }
-   100% {
-      opacity: 1;
-   }
-}
-
-@keyframes second-text-opacity {
-   0% {
-      opacity: 0;
-   }
-   25% {
-      opacity: 0;
-   }
-   50% {
-      opacity: 1;
-   }
-   75% {
-      opacity: 1;
-   }
-   100% {
-      opacity: 0;
-   }
-}
 </style>
