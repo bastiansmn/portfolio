@@ -22,7 +22,7 @@
       <div class="introducing">
          <img
                class="avatar card tilting"
-               src="src/assets/avatar.jpg"
+               src="/avatar.jpg"
                alt="Bastian Somon"
          />
          <div class="presentation__text reveal-rtl">
