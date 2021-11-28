@@ -9,7 +9,9 @@
       <div id="work" class="section">
 			<Work />
 		</div>
-      <div id="contact" class="section"></div>
+      <div id="contact" class="section">
+			<Contact />
+		</div>
    </div>
 </template>
 
@@ -21,6 +23,7 @@ import {mapActions, mapGetters} from "vuex";
 import setActive from "./utils/function";
 import About from "./components/About/About.vue";
 import Work from "./components/Work/Work.vue";
+import Contact from "./components/Contact/Contact.vue";
 
 export default {
    components: {
@@ -28,6 +31,7 @@ export default {
       Navbar,
       Home,
 		Work,
+		Contact
    },
    beforeMount() {
       !"fr-FR".includes(navigator.language) && this.setLang(true);
@@ -139,4 +143,9 @@ export default {
 	position: relative;
 }
 
+
+#contact {
+	margin-top: 110px;
+	height: calc(100vh - 110px);
+}
 </style>

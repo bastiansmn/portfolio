@@ -1,5 +1,37 @@
 <template>
 	<div class="Work">
+		<!-- Bubbles -->
+		<div class="bubble white-gradient __medium" style="
+			left: -150px;
+			bottom: 0;
+			--xmove: -10px !important;
+			--ymove: -5px !important;
+		"></div>
+		<div class="bubble blue-gradient __small" style="
+			left: 20px;
+			bottom: 120px;
+			--xmove: 7px !important;
+			--ymove: 2px !important;
+		"></div>
+		<div class="bubble blue-gradient __medium" style="
+			right: -160px;
+			bottom: 110px;
+			--xmove: -10px !important;
+			--ymove: -5px !important;
+		"></div>
+		<div class="bubble blue-gradient __small" style="
+			right: 0;
+			bottom: 270px;
+			--xmove: -10px !important;
+			--ymove: -5px !important;
+		"></div>
+		<div class="bubble blue-gradient __small" style="
+			left: 10px;
+			top: 50px;
+			--xmove: -10px !important;
+			--ymove: -5px !important;
+		"></div>
+
 		<!-- TODO : Factor le carroussel dans un component -->
 		<div class="carroussel">
 			<h1>
@@ -10,9 +42,9 @@
 				}}
 			</h1>
 
-			<!-- TODO : Faire que le scroll gère le carroussel (goToSlide(+1) si vers la droite etc) -->
-			<div class="slider reveal-btt" ref="slider">
-				<div class="projects">
+			<div class="slider reveal-btt" @scroll.prevent ref="slider">
+				<div 
+					class="projects">
 					<a 
 						:href="proj.project_link"
 						target="blank"
@@ -54,22 +86,6 @@
 						</div>
 					</a>
 				</div>
-
-				<button 
-					:disabled="this.currentSlide === 0"
-					@click="goToSlide(-1)"
-					class="prev">
-					<span></span>
-					<span></span>
-				</button>
-
-				<button
-					:disabled="this.currentSlide === this.work.length - 1"
-					@click="goToSlide(+1)"
-					class="next">
-					<span></span>
-					<span></span>
-				</button>
 			</div>
 		</div>
 	</div>
@@ -89,10 +105,7 @@ export default {
 		...mapGetters(["getLang"]),
 	},
 	methods: {
-		goToSlide(incr) {
-			if (this.currentSlide + incr < this.work.length && this.currentSlide + incr >= 0)
-				this.currentSlide += incr
-		}
+		
 	},
 	mounted() {
 		
@@ -100,6 +113,7 @@ export default {
 	data() {
 		return {
 			currentSlide: 0,
+			slideEnabled: true,
 
 			text,
 			work
@@ -143,83 +157,6 @@ export default {
 		align-items: center;
 		justify-content: center;
 
-		& > button {
-			position: absolute;
-			width: 40px;
-			height: 50px;
-			border: none;
-			outline: none;
-			border-radius: 5px;
-			z-index: 101;
-
-			& > span {
-				display: block;
-				width: 22px;
-				height: 6px;
-				border-radius: 3px;
-			}
-			
-			&.next {
-				--toX: 5px;
-				right: 10px;
-				& > span:nth-child(1) {
-					transform-origin: bottom right;
-					transform:
-						translateY(4px)
-						rotateZ(45deg);
-				}
-				& > span:nth-child(2) {
-					transform-origin: top right;
-					transform:
-						translateY(-4px)
-						rotateZ(-45deg);
-				}
-			}
-
-			&.prev {
-				--toX: -5px;
-				left: 10px;
-				& > span:nth-child(1) {
-					transform-origin: bottom left;
-					transform:
-						translateX(4px)
-						rotateZ(45deg);
-				}
-				& > span:nth-child(2) {
-					transform-origin: top left;
-					transform:
-						translateX(4px)
-						rotateZ(-45deg);
-				}
-			}
-
-			&[disabled] {
-				background: rgba(0, 0, 0, .2);
-				cursor: initial;
-
-				& > span {
-					
-					background: var(--dark-grey);
-					border-radius: 3px;
-				}
-			}
-
-			&:not([disabled]) {
-				background: hsl(0, 0, 100, .2);
-				cursor: pointer;
-
-				&:hover {
-					background: var(--primary);
-					animation: anim-button 1s infinite;
-				}
-
-				& > span {
-					background: var(--white);
-				}
-			}
-		}
-
-
 		& > .projects {
 			height: 100%;
 
@@ -232,6 +169,7 @@ export default {
 
 			& > .project {
 				height: 100%;
+				max-height: 100%;
 				aspect-ratio: 16/9;
 				color: var(--white);
 				position: relative;
@@ -241,7 +179,7 @@ export default {
 					height: 100%;
 					width: 100%;
 					opacity: 0;
-					background: hsl(0, 0, 0, .5);
+					background: hsl(0, 0%, 0%, .5);
 					visibility: hidden;
 					z-index: 100;
 
