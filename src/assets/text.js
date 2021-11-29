@@ -71,7 +71,7 @@ export default {
 
 	techs: {
 		p1: {
-			fr: "La programmation a commencé à être <span>un hobby</span> pour moi un peu <span>avant d'étudier l'informatique à l'Université</span>. J'essaie toujours de passer au-delà de la synthaxe que le langage me propose et de <span>comprendre ses mécanismes plus complexes</span>. Mes principaux langages de programmation sont axés sur le Web, notamment <span>JavaScript / HTML / CSS</span> et ses frameworks (Vue.JS, SCSS, ...). Pour chaque projet personnels, j'essaie de changer la stack que j'utilise afin de toujours coder avec des technologies actuelles, ou d'en découvrir.",
+			fr: "La programmation a commencé à être <span>un hobby</span> pour moi un peu <span>avant d'étudier l'informatique à l'Université</span>. J'essaie toujours de passer au-delà de la synthaxe que le langage me propose et de <span>comprendre ses mécanismes plus complexes</span>. Mes principaux langages de programmation sont axés sur le Web, notamment <span>JavaScript / HTML / CSS</span> et ses frameworks (Vue.JS, SCSS, ...). Pour chaque projet personnel, j'essaie de changer la stack que j'utilise afin de toujours coder avec des technologies actuelles, ou d'en découvrir.",
 			en: "Programming started to be <span>a hobby before I studied computer science at university</span>. I always try to go beyond the syntax that language offers me and <span>to understand its more complex mechanisms</span>. My main programming languages ​​are focused on the Web, in particular <span>JavaScript / HTML / CSS</span> and its frameworks (Vue.JS, SCSS, ...). For each personal project, I try to change the stack I use in order to always code with current technologies, or to discover new ones."
 		},
 		p2: {
@@ -130,7 +130,7 @@ export default {
 			en: "Write your message here",
 		},
 		description: {
-			fr: "Si vous souhaitez m'envoyer un message, entrez le dans l'encadré et je le recevrai par mail ! Je suis très attentif à mes mails donc je le lirai et y repondrai aussi vite que possible. Merci de votre attention, et à bientôt j'espère !",
+			fr: "Si vous souhaitez m'envoyer un message, entrez le dans l'encadré et je le recevrai par mail ! Je suis très attentif à mes mails donc je le lirai et y répondrai aussi vite que possible. Merci de votre attention, et à bientôt j'espère !",
 			en: "If you want to send me a message, enter it in the box and I will receive it by email! I am very attentive to my emails so I will read it and answer it as quickly as possible. Thank you for your attention, and I hope to see you soon !"
 		}
 	}
