@@ -1,0 +1,171 @@
+:root {
+   /* Color scheme */
+   --dark-blue: #191B29;
+   --white: #FFFFFF;
+   --primary: #24B0B9;
+   --dark-grey: #595959;
+
+   --glass: rgba(255, 255, 255, 0.1);
+}
+
+@font-face {
+   font-family: Lato-Regular;
+   src: url("/fonts/Lato/Lato-Regular.ttf");
+}
+
+@font-face {
+   font-family: Lato-Light;
+   src: url("/fonts/Lato/Lato-Light.ttf");
+}
+
+@font-face {
+   font-family: Lato-Bold, sans-serif;
+   src: url("/fonts/Lato/Lato-Bold.ttf");
+}
+
+h1 {
+	color: var(--primary);
+	font-size: 40px;
+	margin-block: 12px;
+}
+
+p {
+   font-size: 17px;
+   margin-block: 5px;
+	text-indent: 10px;
+}
+
+
+#app {
+   font-family: Lato-Regular, sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+
+	position: relative;
+
+   width: 100%;
+   height: 100%;
+
+   color: var(--white);
+   position: relative;
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: #191B29;
+   overflow: hidden;
+}
+
+*::-webkit-scrollbar {
+   width: 3px;
+}
+
+
+*::-webkit-scrollbar-thumb {
+   background: var(--white);
+}
+
+* {
+   transition: all 0.4s ease-in-out;
+   scroll-behavior: smooth;
+   scroll-margin-top: 110px;
+}
+
+.glass__effect {
+   background: rgba(139, 101, 101, .1);
+   border-top: 1px solid rgba(255, 255, 255, 0.5);
+   border-left: 1px solid rgba(255, 255, 255, 0.5);
+   backdrop-filter: blur(5px);
+}
+
+::selection {
+   background-color: var(--primary);
+   color: var(--white);
+}
+
+::-moz-selection {
+   background-color: var(--primary);
+   color: var(--white);
+}
+
+
+
+/*
+ Bubbles
+ */
+
+
+.blue-gradient {
+   background: linear-gradient(
+         90deg,
+         rgba(36, 176, 185, 1) 0%,
+         rgba(36, 151, 185, 1) 100%
+   );
+}
+
+.white-gradient {
+   background: linear-gradient(
+         90deg,
+         rgba(224,224,224,1) 0%,
+         rgba(255,255,255,1) 100%
+   );
+}
+
+.bubble {
+   border-radius: 50%;
+   z-index: 1;
+   position: absolute;
+
+   animation: bubble infinite ease-in-out alternate;
+}
+
+.__big {
+   width: 317px;
+   height: 317px;
+   opacity: .6;
+   filter: blur(6px);
+   animation-duration: 2s;
+
+   --xmove: 2px;
+   --ymove: 7px;
+}
+
+.__medium {
+   width: 174px;
+   height: 174px;
+   filter: blur(4px);
+   opacity: .9;
+   animation-duration: 1.5s;
+
+   --xmove: -4px;
+   --ymove: 6px;
+}
+
+.__small {
+   width: 32px;
+   height: 32px;
+   opacity: .7;
+   filter: blur(2px);
+   animation-duration: 2.5s;
+
+   --xmove: 7px;
+   --ymove: -4px;
+}
+
+@keyframes bubble {
+   from {
+      transform: scale(1) translateX(var(--xmove)) translateY(var(--ymove));
+   }
+   to {
+      transform: scale(1.02);
+   }
+}
+
+
+
+html {
+   overflow: hidden;
+}
