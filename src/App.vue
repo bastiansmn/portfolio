@@ -17,7 +17,7 @@
 
 <script>
 import vanillaTilt from "vanilla-tilt";
-import Navbar from "./components/Navbar.vue";
+import Navbar from "./components/Navbar/Navbar.vue";
 import Home from "./components/Home/Home.vue";
 import {mapActions, mapGetters} from "vuex";
 import setActive from "./utils/function";
