@@ -1,20 +1,21 @@
 <template>
    <div class="home">
+		<!-- TODO max/min sur les positions des bulles ? -->
       <div class="bubble blue-gradient __big" style="
-         left: -150px;
-         top: 146px;
+         left: -12vw;
+         top: 14vh;
       "></div>
       <div class="bubble white-gradient __medium" style="
-         right: -43px;
-         top: 376px;
+         right: -5vw;
+         bottom: 20vh;
       "></div>
       <div class="bubble white-gradient __small" style="
-         right: 131px;
-         top: 77px;
+         right: 10vw;
+         top: 8vh;
       "></div>
       <div class="bubble blue-gradient __small" style="
-         right: 100px;
-         top: 376px;
+         right: 10vw;
+         top: 37vh;
          --xmove: -10px !important;
          --ymove: -5px !important;
       "></div>
@@ -91,69 +92,114 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@media screen and (max-width: 930px) {
+	.home {
+		width: 85%;
+		height: 80%;
+
+		& > .introducing {
+			margin-top: 0;
+			width: 100%;
+			height: calc(100% - 100px);
+			flex-direction: column;
+
+			& > .presentation__text {
+				padding-block: 20px;
+				width: 90%;
+
+				& > p {
+					font-size: min(2.5vh, 17px);
+				}
+				& > h1 {
+					font-size: min(6vh, 40px);
+				}
+			}
+
+			& > .avatar {
+				height: 40%;
+				max-height: 190px;
+			}
+		}
+
+		& > .continue {
+			bottom: 0;
+		}
+	}
+}
+
+@media screen and (min-width: 931px) {
+	.home {
+		width: 100%;
+   	height: 80vh;
+
+		& > .introducing {
+			margin-top: min(15vh, 150px);
+			width: 65%;
+			max-width: 850px;
+			min-width: 600px;
+			height: 220px;
+			padding: 10px;
+
+			& > .avatar {
+				height: 240px;
+				aspect-ratio: 1;
+			}
+
+			& > .presentation__text {
+				width: calc(100% - 330px);
+				max-width: 450px;
+				height: 90%;	
+			}
+		}
+
+		& > .continue {
+			bottom: 7%;
+		}
+	}
+}
+
 .home {
    position: relative;
    display: flex;
    justify-content: center;
 
-   height: 80vh;
 
-   width: 100%;
-}
+	& > .introducing {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
-.card {
-   position: relative;
-   margin: 10px;
-   overflow: hidden;
-   border-radius: 15px;
-   box-shadow: 20px 20px 50px rgba(0, 0, 0, .5);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   z-index: 100;
-}
+		z-index: 10;
 
+		& > .card {
+			position: relative;
+			margin: 10px;
+			overflow: hidden;
+			border-radius: 15px;
+			box-shadow: 20px 20px 50px rgba(0, 0, 0, .5);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 100;
+		}
 
+		& > .avatar {
+			aspect-ratio: 1;
+			border-radius: 30px;
+		}
 
-.introducing {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
+		& > .presentation__text {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+		}
+	}
 
-   width: 65%;
-   max-width: 850px;
-   min-width: 600px;
-   height: 220px;
-   margin-top: min(15vh, 150px);
-   padding: 10px;
-
-   z-index: 10;
-}
-
-.avatar {
-   height: 240px;
-   width: 240px;
-   border-radius: 30px;
-}
-
-.presentation__text {
-   width: calc(100% - 330px);
-   max-width: 450px;
-   height: 90%;
-
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   justify-content: center;
-}
-
-.presentation__text:first-child {
-   font-size: 16px;
-}
-
-.continue {
-   position: absolute;
-   bottom: 7%;
+	& > .continue {
+		position: absolute;
+		z-index: 100;
+	}
 }
 </style>

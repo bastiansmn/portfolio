@@ -2,9 +2,7 @@
 <!-- TODO : Améliorer le responsive de base -->
 	<div class="SoftSkills">
 		<div class="text reveal-ltr">
-			<div
-				style="margin: 10vh 50px"
-			>
+			<div>
 				<h1>{{
 						this.getLang 
 							? text.soft_skills.title.en
@@ -20,7 +18,7 @@
 			</div>
 		</div>
 		<div class="soft_skills">
-			<div class="card reveal-rtl tilting-low">
+			<div class="card reveal-rtl" :class="!this.isMobile && 'tilting-low'">
 				<div>
 					<h2 style="color: var(--primary)">
 						{{
@@ -72,7 +70,7 @@ export default {
 		
 	},
 	computed: {
-		...mapGetters(["getLang"]),
+		...mapGetters(["getLang", "isMobile"]),
 	},	
 	data() {
 		return {
@@ -95,19 +93,83 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@media screen and (max-width: 930px) {
+	.SoftSkills {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		min-height: calc(100% - 100px);
+		max-height: calc(100% - 100px);
+		
+		& > div {
+			width: 100%;
+		}
+
+		& > .text > div {
+			& > p {
+				font-size: min(2.5vh, 17px);
+			}
+			& > h1 {
+				font-size: min(6vh, 40px);
+			}
+		}
+		& > .soft_skills {
+			margin-block: 3vh;
+		
+			& > .card {
+				width: 100%;
+				height: 100%;
+
+				& > div {
+					margin: 15px;
+
+					& > h2 {
+						display: none;
+					}
+
+					& > ul > li {
+						height: 5vh;
+					}
+
+					& > ul > li:last-child {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 931px) {
+	.SoftSkills {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		height: 100%;
+
+		& > div {
+			width: 45%;
+			height: 100%;
+		}
+
+		& > .text > div {
+			margin: 10vh 50px;
+		}
+	}
+
+	.card > div {
+		height: calc(100% - 80px);	
+	}
+
+	.list-soft_skills {
+		height: calc(100% - 50px);
+	}
+}
+
 .SoftSkills {
 	width: 100%;
-	height: 100%;
-
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-
-	& > div {
-		width: 45%;
-		height: 100%;
-	}
 }
 
 .soft_skills {
@@ -126,7 +188,6 @@ export default {
 
 	& > div {
 		margin: 40px;
-		height: calc(100% - 80px);	
 	}
 }
 
@@ -135,15 +196,13 @@ export default {
 	padding: 0;
 	margin: 0;
 
-	height: calc(100% - 50px);
-
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
 	flex-direction: column;
 
 	& > li:not(:last-child) {
-		width: 100%;
+		width: calc(100% - 20px);
 		height: 45px;
 		display: flex;
 		flex-direction: row;
@@ -153,10 +212,6 @@ export default {
 		background: none;
 		border-radius: 7px;
 		transition: background .2s ease-out;
-
-		// &:hover {
-		// 	background: var(--primary);
-		// }
 	}
 
 	& > li > img {

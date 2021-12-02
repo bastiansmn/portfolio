@@ -2,7 +2,7 @@
 	<div class="Languages">
 		<!-- TODO -->
 		<div class="techs reveal-ltr">
-			<div class="card tilting-low">
+			<div class="card" :class="!this.isMobile && 'tilting-low'">
 				<div>
 					<div
 						:key="key"
@@ -65,7 +65,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(["getLang"])
+		...mapGetters(["getLang", "isMobile"])
 	},
 	mounted() {
 		vanillaTilt.init(document.querySelectorAll(".tilting-low"), {
@@ -88,9 +88,46 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@media screen and (max-width: 930px) {
+	.Languages {
+		align-items: start;
+		flex-direction: column;
+		min-height: calc(100% - 100px);
+		max-height: calc(100% - 100px);
+		
+		& > .techs {
+			display: none;
+		}
+		
+		& > .text {
+			width: 100%;
+			& > div {
+				margin: 0;
+
+				& > h2 {
+					display: none;
+				}
+				& > p {
+					font-size: min(2.5vh, 15px);
+				}
+			}	
+		}
+	}
+}
+
+@media screen and (min-width: 931px) {
+	.Languages {
+		flex-direction: row;
+		height: 100%;
+
+		& > div {
+			width: 45%;
+		}
+	}	
+}
+
 .Languages {
 	width: 100%;
-	height: 100%;
 
 	display: flex;
 	flex-direction: row;
@@ -99,7 +136,6 @@ export default {
 
 	& > div {
 		height: 100%;
-		width: 45%;
 	}
 }
 

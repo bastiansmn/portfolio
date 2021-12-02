@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-	 "devhost": "vite --host",
+    "devhost": "vite --host",
     "build": "vite build",
     "serve": "vite preview",
-	 "deploy": "sh deploy.sh"
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "nodemailer": "^6.7.2",
+    "emailjs-com": "^3.2.0",
     "vanilla-tilt": "^1.7.2",
     "vue": "^3.2.6",
     "vuex": "^4.0.2"

@@ -2,32 +2,26 @@
          
 	<!-- Bubbles -->
 	<div class="bubble blue-gradient __medium" style="
-      left: -10px;
-      bottom: 100px;
+      left: -1vw;
+      bottom: 12vh;
       --xmove: -10px !important;
       --ymove: -5px !important;
    "></div>
 	<div class="bubble white-gradient __small" style="
-      left: 130px;
-      bottom: 100px;
+      left: 10vw;
+      bottom: 10vh;
       --xmove: 7px !important;
       --ymove: 2px !important;
    "></div>
 	<div class="bubble white-gradient __big" style="
-      right: -150px;
-      top: 110px;
+      right: -15vw;
+      top: 10vh;
       --xmove: -10px !important;
       --ymove: -5px !important;
    "></div>
 	<div class="bubble blue-gradient __small" style="
-      right: 100px;
-      top: 410px;
-      --xmove: -10px !important;
-      --ymove: -5px !important;
-   "></div>
-	<div class="bubble white-gradient __small" style="
-      left: 100px;
-      top: 50px;
+      right: 9vw;
+      top: 40vh;
       --xmove: -10px !important;
       --ymove: -5px !important;
    "></div>
@@ -83,13 +77,26 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 930px) {
+	.about {
+		height: 90vh;
+		top: 0;
+		align-items: flex-start;
+	}
+}
+
+@media screen and (min-width: 931px) {
+	.about {
+		align-items: center;
+		min-height: 80vh;
+	}
+}
+
 .about {
    position: relative;
-   min-height: 80vh;
    width: 90%;
 
    display: flex;
-   align-items: center;
    justify-content: center;
 }
 

@@ -86,11 +86,35 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 931px) {
+	.Switcher {
+		width: 60%;
+		align-self: center;
+		position: absolute;
+    	bottom: 0;
+    	left: 50%;
+    	transform: translateX(-50%);
+	}
+
+	.underline {
+		margin-bottom: 20px;
+	}
+}
+
+@media screen and (min-width: 930px) {
+	.Switcher {
+		left: 0;
+		width: 45%;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.underline {
+		margin-bottom: 4vh;
+	}
+}
+
 .Switcher {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 45%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -127,6 +151,5 @@ export default {
 	transform-origin: center;
 	background: var(--white);
 	transition: all .8s ease-in-out;
-	margin-bottom: 4vh;
 }
 </style>

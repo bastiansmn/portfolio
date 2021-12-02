@@ -2,32 +2,32 @@
 	<div class="Work">
 		<!-- Bubbles -->
 		<div class="bubble white-gradient __medium" style="
-			left: -150px;
+			left: -11vw;
 			bottom: 0;
 			--xmove: -10px !important;
 			--ymove: -5px !important;
 		"></div>
 		<div class="bubble blue-gradient __small" style="
-			left: 20px;
-			bottom: 120px;
+			left: 2vw;
+			bottom: 14vh;
 			--xmove: 7px !important;
 			--ymove: 2px !important;
 		"></div>
 		<div class="bubble blue-gradient __medium" style="
-			right: -160px;
-			bottom: 110px;
+			right: -13vw;
+			bottom: 11vh;
 			--xmove: -10px !important;
 			--ymove: -5px !important;
 		"></div>
 		<div class="bubble blue-gradient __small" style="
 			right: 0;
-			bottom: 270px;
+			bottom: 27vh;
 			--xmove: -10px !important;
 			--ymove: -5px !important;
 		"></div>
 		<div class="bubble blue-gradient __small" style="
-			left: 10px;
-			top: 50px;
+			left: 1vw;
+			top: 5vh;
 			--xmove: -10px !important;
 			--ymove: -5px !important;
 		"></div>
@@ -42,9 +42,8 @@
 				}}
 			</h1>
 
-			<div class="slider reveal-btt" @scroll.prevent ref="slider">
-				<div 
-					class="projects">
+			<div class="slider" :class="!this.isMobile && 'reveal-btt'" ref="slider">
+				<div class="projects" ref="projects">
 					<a 
 						:href="proj.project_link"
 						target="blank"
@@ -102,13 +101,23 @@ export default {
 		
 	},
 	computed: {
-		...mapGetters(["getLang"]),
+		...mapGetters(["getLang", "isMobile"]),
 	},
 	methods: {
 		
 	},
 	mounted() {
-		
+		if (!this.isMobile) {
+			let projw = Math.floor(this.$refs["projects"].scrollWidth / this.work.length);
+			setInterval(_ => {
+				this.$refs["slider"].scrollTo({
+					left: projw*(this.currentSlide % this.work.length),
+					top: 0,
+					behavior: "smooth"
+				});
+				this.currentSlide++;
+			}, 10_000);
+		}
 	},
 	data() {
 		return {
@@ -123,29 +132,65 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.Work {
-	position: relative;
-
-	width: 90%;
-	min-height: 80vh;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.carroussel {
-	position: relative;
-
-	width: 90%;
-	height: 70vh;
-
-	& > h1 {
-		color: var(--primary);
-		width: 90%;
+@media screen and (max-width: 930px) {
+	.Work {
+		margin-top: 50px;
 	}
 
-	& > .slider {
+	.slider {
+		background: rgba(255, 255, 255, .1);
+		backdrop-filter: blur(4px);
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+
+		border-radius: 12px;
+		margin-top: 40px;
+
+		& > .projects {
+			--margin: 15px;
+			margin: var(--margin);
+			width: calc(100% - 2*var(--margin));
+			height: calc(100% - 2*var(--margin));
+			
+			display: flex;
+			flex-direction: column;
+
+			& > .project {
+				max-width: 100%;
+				aspect-ratio: 16/9;
+				
+				&:not(:last-child) {
+					margin-bottom: var(--margin);
+				}
+
+				& > .blur__effect {
+					display: none;
+				}
+
+				& > .image {
+					width: 100%;
+
+					& > img {
+						width: 100%;
+						border-radius: 6px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 931px) {
+	.carroussel {
+		height: 70vh;
+	}
+	
+	.slider {
 		position: relative;
 
 		box-shadow: 20px 20px 50px rgba(0, 0, 0, .5);
@@ -155,7 +200,8 @@ export default {
 
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
+		overflow-x: scroll;
 
 		& > .projects {
 			height: 100%;
@@ -164,8 +210,6 @@ export default {
 			flex-direction: row;
 			align-items: center;
 			justify-content: flex-start;
-
-			overflow-x: scroll;
 
 			& > .project {
 				height: 100%;
@@ -180,6 +224,7 @@ export default {
 					width: 100%;
 					opacity: 0;
 					background: hsl(0, 0%, 0%, .5);
+					backdrop-filter: blur(2px);
 					visibility: hidden;
 					z-index: 100;
 
@@ -216,6 +261,7 @@ export default {
 							
 							& > .tech {
 								height: 100%;
+								margin-inline: 5px;
 								aspect-ratio: 1;
 
 								& > img {
@@ -255,6 +301,29 @@ export default {
 				}
 			}
 		}
+	}
+}
+
+.Work {
+	position: relative;
+
+	width: 90%;
+	min-height: 80vh;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.carroussel {
+	position: relative;
+
+	width: 90%;
+	z-index: 999;
+
+	& > h1 {
+		color: var(--primary);
+		width: 90%;
 	}
 }
 

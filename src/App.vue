@@ -1,8 +1,9 @@
 <template>
    <navbar />
    <div class="portfolio__content">
-      <div class="section" id="home" style="height: 110px;"></div>
-      <Home class="home" />
+      <div id="home" class="section">
+      	<Home class="home" />
+		</div>
       <div id="about" class="section">
          <About />
       </div>
@@ -37,6 +38,7 @@ export default {
       !"fr-FR".includes(navigator.language) && this.setLang(true);
    },
    mounted() {
+		// TODO : Vérifier la compatibilité avec mobile
       const anchors = document.querySelectorAll('.section');
       const observer = new IntersectionObserver((entries) => {
          entries.forEach(entry => {
@@ -45,19 +47,13 @@ export default {
                   location.hash = `#${entry.target.id}`
                   setActive(entry.target.id);
                }
-					if (entry.target.id === "home") {
-						document.querySelector(".home").classList.add("section_active");
+					entry.target.classList.add("section_active");
+					if (entry.target.id === "home")
                   document.querySelector(".navbar").classList.remove("navbar__background");
-					} else {
-						entry.target.classList.add("section_active");
+					else
                   document.querySelector(".navbar").classList.add("navbar__background");
-					}
             } else {
-					if (entry.target.id === "home") {
-						document.querySelector(".home").classList.remove("section_active");
-					} else {
-						entry.target.classList.remove("section_active");
-					}
+					entry.target.classList.remove("section_active");
 				}
          });
       }, {
@@ -67,13 +63,19 @@ export default {
          observer.observe(anchor)
       });
 
-// TODO : Vérifier si tout fonctionne bien avec une souris
+		// TODO : Vérifier si tout fonctionne bien avec une souris
       window.addEventListener("mousewheel", _ => {
          this.setObserver(true);
       });
 		window.addEventListener("DOMMouseScroll", _ => {
 			this.setObserver(true);
 		})
+		window.onresize = _ => {
+			if (!this.isMobile && window.innerWidth < 931)
+				this.setMobile();
+			else if (this.isMobile && window.innerWidth > 930)
+				this.setDesktop();
+		};
 
 		vanillaTilt.init(document.querySelectorAll(".tilting"), {
          max: 7,
@@ -93,20 +95,53 @@ export default {
          startX: -4,
          startY: 0,
       });
+
+		if (window.innerWidth < 931)
+			this.setMobile();
+		else if (window.innerWidth > 930)
+			this.setDesktop();
+	
    },
    computed: {
-      ...mapGetters(['observerEnabled'])
+      ...mapGetters(['observerEnabled', 'isMobile'])
    },
    methods: {
-      ...mapActions(['setLang', 'setObserver'])
+      ...mapActions(['setLang', 'setObserver', 'setMobile', 'setDesktop']),
    },
 }
 </script>
 
 <style>
 
-#about, #work, #contact {
-   min-height: 700px;
+@media screen and (min-width: 931px) {
+	.section {
+		padding-top: 110px;
+	}
+
+	#about, #work, #contact {
+		min-height: 700px;
+	}
+
+	#contact {
+		margin-top: 110px;
+		height: calc(100vh - 110px);
+	}
+}
+
+@media screen and (max-width: 930px) {
+	#home {
+		margin-top: 0 !important;
+	}	
+
+	#work {
+		align-items: flex-start;
+		height: unset;
+	}
+
+	.section {
+		height: 100vh;
+		width: 100vw;
+	}
 }
 
 .portfolio__content {
@@ -141,11 +176,5 @@ export default {
 	justify-content: center;
 
 	position: relative;
-}
-
-
-#contact {
-	margin-top: 110px;
-	height: calc(100vh - 110px);
 }
 </style>

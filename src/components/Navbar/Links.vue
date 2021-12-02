@@ -60,26 +60,48 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@media screen and (max-width: 930px) {
+	.anchor {
+		width: 100%;
+		flex-direction: column;
+		margin-block-start: 100px;
+
+		& > a {
+			margin-bottom: 70px;
+
+			&.anchor_active:before {
+				transform: translateY(-20px) translateX(130px);
+			}
+		}
+	}
+} 
+
+@media screen and (min-width: 931px) {
+	.anchor {
+		width: 440px;
+		flex-direction: row;
+		padding-inline: 5px;
+		margin-inline: 75px;
+	}
+}
+
 .anchor {
-   width: 440px;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding-inline: 5px;
-   margin-inline: 75px;
    position: relative;
-}
 
-.anchor > a {
-   text-decoration: none;
-   width: 66px;
-   color: var(--dark-grey);
-   font-size: 15px;
-   font-weight: bolder;
-   display: flex;
-   align-self: center;
-   justify-content: center;
+	& > a {
+		text-decoration: none;
+		width: 66px;
+		color: var(--dark-grey);
+		font-size: 15px;
+		font-weight: bolder;
+		display: flex;
+		align-self: center;
+		justify-content: center;
+	}
 }
 
 .anchor > a:hover {

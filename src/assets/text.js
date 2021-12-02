@@ -130,8 +130,19 @@ export default {
 			en: "Write your message here",
 		},
 		description: {
-			fr: "Si vous souhaitez m'envoyer un message, entrez le dans l'encadré et je le recevrai par mail ! Je suis très attentif à mes mails donc je le lirai et y répondrai aussi vite que possible. Merci de votre attention, et à bientôt j'espère !",
-			en: "If you want to send me a message, enter it in the box and I will receive it by email! I am very attentive to my emails so I will read it and answer it as quickly as possible. Thank you for your attention, and I hope to see you soon !"
+			fr: "Si vous souhaitez m'envoyer un message, entrez le dans l'encadré et je le recevrai par mail ! Je suis très attentif à mes mails donc je le lirai et y répondrai aussi vite que possible.",
+			en: "If you want to send me a message, enter it in the box and I will receive it by email! I am very attentive to my emails so I will read it and answer it as quickly as possible."
+		}
+	},
+
+	emailed: {
+		h1: {
+			fr: "Merci !",
+			en: "Thanks !"
+		},
+		p: {
+			fr: "J'ai bien reçu votre mail et je vais y répondre dès que possible. Merci de votre intêret pour mon profil et à bientôt j'espère !",
+			en: "I have received your email and will answer it as soon as possible. Thank you for your interest in my profile and I hope to see you soon !"
 		}
 	}
 
