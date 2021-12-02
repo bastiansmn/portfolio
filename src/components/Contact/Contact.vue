@@ -80,7 +80,7 @@
 				</div>
 			</form>
 			<div v-else class="mailSent">
-				<img src="icons/check.png" alt="">
+				<img src="/icons/check.png" alt="">
 				<div class="text">
 					<h1>
 						{{ 
