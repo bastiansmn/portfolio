@@ -75,6 +75,7 @@ body {
 * {
    transition: all 0.4s ease-in-out;
    scroll-behavior: smooth;
+	color: white;
 }
 
 .glass__effect {

@@ -1,6 +1,7 @@
 <template>
 	<div class="anchor">
       <a href="#home"
+			:class="this.isMobile && 'mobile'"
          @click="setActive('home'); setObserver(false);"
       >{{
             this.getLang
@@ -9,6 +10,7 @@
          }}
       </a>
       <a href="#about"
+			:class="this.isMobile && 'mobile'"
          @click="setActive('about'); setObserver(false);"
       >{{
             this.getLang
@@ -17,6 +19,7 @@
          }}
       </a>
       <a href="#work"
+			:class="this.isMobile && 'mobile'"
          @click="setActive('work'); setObserver(false);"
       >{{
             this.getLang
@@ -25,6 +28,7 @@
          }}
       </a>
       <a href="#contact"
+			:class="this.isMobile && 'mobile'"
          @click="setActive('contact'); setObserver(false);"
       >{{
             this.getLang
@@ -50,7 +54,7 @@ export default {
 		...mapActions(["setObserver"])
 	},
 	computed: {
-		...mapGetters(["getLang"])
+		...mapGetters(["getLang", "isMobile"])
 	},
 	data() {
 		return {
@@ -104,7 +108,7 @@ export default {
 	}
 }
 
-.anchor > a:hover {
+.anchor > a:not(.mobile):hover {
    color: var(--white);
 }
 

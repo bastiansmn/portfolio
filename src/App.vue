@@ -1,6 +1,6 @@
 <template>
    <navbar />
-   <div class="portfolio__content">
+   <div class="portfolio__content" ref="scrollable_content">
       <div id="home" class="section">
       	<Home class="home" />
 		</div>
@@ -48,13 +48,15 @@ export default {
                   setActive(entry.target.id);
                }
 					entry.target.classList.add("section_active");
-					if (entry.target.id === "home")
-                  document.querySelector(".navbar").classList.remove("navbar__background");
-					else
-                  document.querySelector(".navbar").classList.add("navbar__background");
-            } else {
-					entry.target.classList.remove("section_active");
-				}
+					if (!this.isMobile) {
+						if (entry.target.id === "home")
+							document.querySelector(".navbar").classList.remove("navbar__background");
+						else
+							document.querySelector(".navbar").classList.add("navbar__background");
+					} else {
+						
+					}
+            }
          });
       }, {
          threshold: .55
@@ -63,13 +65,14 @@ export default {
          observer.observe(anchor)
       });
 
-		// TODO : Vérifier si tout fonctionne bien avec une souris
-      window.addEventListener("mousewheel", _ => {
-         this.setObserver(true);
-      });
-		window.addEventListener("DOMMouseScroll", _ => {
-			this.setObserver(true);
-		})
+		// TODO Utiliser les requestAnimationFrame pour limiter l'appel à setObserver
+		this.$refs["scrollable_content"].onmousewheel = _ => {
+			!this.observerEnabled && this.setObserver(true);
+		};
+		this.$refs["scrollable_content"].addEventListener("touchmove", $event => {
+			!this.observerEnabled && this.setObserver(true);
+		});
+		
 		window.onresize = _ => {
 			if (!this.isMobile && window.innerWidth < 931)
 				this.setMobile();
@@ -111,7 +114,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 @media screen and (min-width: 931px) {
 	.section {

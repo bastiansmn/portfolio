@@ -16,7 +16,9 @@
 	</nav>
 
 	<button
-		v-if="getWindowSize"
+		v-if="_ => {
+			window.innerWidth < 931
+		}"
 		@click="this.navbarActive = !this.navbarActive" 
 		class="show_navbar" 
 		:active="this.navbarActive">
@@ -45,10 +47,6 @@ export default {
 	},
 	computed: {
 		...mapGetters(["getLang", "isMobile"]),
-
-		getWindowSize: _ => {
-			return window.innerWidth < 931
-		}
 	},
 	data() {
 		return {

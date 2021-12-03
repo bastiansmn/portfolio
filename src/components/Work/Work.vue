@@ -33,7 +33,7 @@
 		"></div>
 
 		<!-- TODO : Factor le carroussel dans un component -->
-		<div class="carroussel">
+		<div class="carroussel reveal-ltr">
 			<h1>
 				{{
 					this.getLang

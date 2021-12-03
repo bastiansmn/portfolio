@@ -1,6 +1,5 @@
 <template>
 	<div class="Languages">
-		<!-- TODO -->
 		<div class="techs reveal-ltr">
 			<div class="card" :class="!this.isMobile && 'tilting-low'">
 				<div>

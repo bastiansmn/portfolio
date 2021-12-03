@@ -1,5 +1,4 @@
 <template>
-<!-- TODO : Améliorer le responsive de base -->
 	<div class="SoftSkills">
 		<div class="text reveal-ltr">
 			<div>
@@ -40,7 +39,7 @@
 						</li>
 						<li>
 							<!-- TODO : Lien vers le CV -->
-							<a href="">
+							<a target="_blank" href="">
 								{{
 									this.getLang
 										? text.resume.en
@@ -130,10 +129,6 @@ export default {
 
 					& > ul > li {
 						height: 5vh;
-					}
-
-					& > ul > li:last-child {
-						display: none;
 					}
 				}
 			}
@@ -232,15 +227,12 @@ export default {
 		justify-content: center;
 
 		& > a {
-			height: 100%;
-			width: 50%;
-			background: var(--primary);
-			text-decoration: none;
-			color: var(--white);
+ 			text-decoration: none;
 			border-radius: 4px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
+			background: var(--primary);
+			color: var(--white);
+			padding-block: 7px;
+			padding-inline: 10px;
 
 			&:hover {
 				transform: scale(1.02);
