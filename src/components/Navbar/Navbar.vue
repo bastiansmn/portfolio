@@ -169,7 +169,7 @@ label {
   text-indent: -9999px;
   width: 32px;
   height: 18px;
-  background-color: var(--primary);
+  background-color: var(--white);
   display: block;
   border-radius: 9px;
   position: relative;
@@ -185,19 +185,19 @@ label:after {
   left: 2px;
   width: 14px;
   height: 14px;
-  background: var(--white);
+  background: var(--primary);
   border-radius: 90px;
   transition: 0.3s;
 }
 
 input:checked + label {
-  background: var(--white);
+  background: var(--primary);
 }
 
 input:checked + label:after {
   left: calc(100% - 2px);
   transform: translateX(-100%);
-  background-color: var(--primary);
+  background-color: var(--white);
 }
 
 label:active:after {

@@ -50,6 +50,7 @@
 						:key="proj.class"
 						v-for="proj in work"
 						class="project"
+						ref="project"
 						:class="proj.class"
 					>
 						<div class="blur__effect">
@@ -108,10 +109,9 @@ export default {
 	},
 	mounted() {
 		if (!this.isMobile) {
-			let projw = Math.floor(this.$refs["projects"].scrollWidth / this.work.length);
 			setInterval(_ => {
 				this.$refs["slider"].scrollTo({
-					left: projw*(this.currentSlide % this.work.length),
+					left: (this.$refs["projects"].scrollWidth / this.work.length)*(this.currentSlide % this.work.length),
 					top: 0,
 					behavior: "smooth"
 				});

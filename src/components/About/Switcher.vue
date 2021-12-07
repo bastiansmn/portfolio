@@ -97,7 +97,7 @@ export default {
 	}
 
 	.underline {
-		margin-bottom: 20px;
+		margin-bottom: 10%;
 	}
 }
 
@@ -110,7 +110,7 @@ export default {
 	}
 
 	.underline {
-		margin-bottom: 4vh;
+		margin-bottom: 3vh;
 	}
 }
 
@@ -123,7 +123,7 @@ export default {
 
 
 .buttons {
-	height: 36px;
+	height: 27px;
 	min-width: 180px;
 	max-width: 180px;
 	display: flex;
@@ -137,6 +137,7 @@ export default {
 
 .clicker {
 	cursor: pointer;
+	color: var(--dark-grey);
 }
 
 .clicker.button_active {

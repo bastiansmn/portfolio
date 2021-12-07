@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="soft_skills">
-			<div class="card reveal-rtl" :class="!this.isMobile && 'tilting-low'">
+			<div class="card reveal-rtl tilting-low">
 				<div>
 					<h2 style="color: var(--primary)">
 						{{
@@ -216,7 +216,7 @@ export default {
 	}
 
 	& > li > span {
-		font-size: 16px;
+		font-size: min(2.5vh, 16px);
 	}
 
 	& > li:last-child {
@@ -231,8 +231,8 @@ export default {
 			border-radius: 4px;
 			background: var(--primary);
 			color: var(--white);
-			padding-block: 7px;
-			padding-inline: 10px;
+			padding-block: .8vh;
+			padding-inline: 1.8vh;
 
 			&:hover {
 				transform: scale(1.02);

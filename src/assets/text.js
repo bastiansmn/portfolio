@@ -114,7 +114,7 @@ export default {
 
 	contact_comp: {
 		contact_me: {
-			fr: "Me contacer !",
+			fr: "Me contacter !",
 			en: "Contact me !"
 		},
 		send: {

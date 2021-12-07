@@ -79,7 +79,7 @@ export default {
 <style scoped>
 @media screen and (max-width: 930px) {
 	.about {
-		height: 90vh;
+		height: 92vh;
 		top: 0;
 		align-items: flex-start;
 	}
