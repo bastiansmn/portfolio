@@ -49,6 +49,18 @@ export default [
 		]
 	},
 	{
+		name: "Fractales",
+		class: "fractales",
+		project_link: "https://github.com/bastiansmn/cpoo-fractales",
+		description: {
+			fr: "Ce projet Java génère des fractales selon les propiétés demandées par l'utilisateur, soit via une interface graphique, soit via la CLI. Il utilise l'API Thread de Java pour gérer les calculs en parallèle et optimiser la vitesse de création. Il utilise aussi beaucoup de notions d'orienté objet poussées comme les patrons de constructions, les interfaces et lambdas, les fonctions de premire ordre ou d'odre supérieur, les streams, etc.",
+			en: "This Java project generates fractals according to the properties set by the user, either through a graphical interface or via the CLI. It uses the Java Thread API to manage the calculations in parallel and optimize the creation speed. It also uses a lot of object-oriented features, such as design patterns, interfaces and lambdas, first-order functions, streams, etc."
+		},
+		techs: [
+			"java"
+		]
+	},
+	{
 		name: "Polish-language",
 		class: "polish-language",
 		project_link: "https://github.com/bastiansmn/polish-language",
