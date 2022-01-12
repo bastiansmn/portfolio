@@ -37,6 +37,30 @@ export default [
 		]
 	},
 	{
+		name: "Cron-clone",
+		class: "cron-clone",
+		project_link: "https://github.com/bastiansmn/cron-clone",
+		description: {
+			fr: "Inspiré de cron pour UNIX, ce projet permet de planifier des tâches périodiques sur votre système et d'afficher leurs informations d'exécution. Il est pincipalement axé sur l'utilisation via la langage C du système UNIX, des processus, et de la gestion d'arborescence",
+			en: "Inspired by cron for UNIX, this project allows you to schedule periodic tasks on your system and display their execution information. It is mainly focused on the use of C system UNIX, processes, and tree management"
+		},
+		techs: [
+			"c",
+		]
+	},
+	{
+		name: "Polish-language",
+		class: "polish-language",
+		project_link: "https://github.com/bastiansmn/polish-language",
+		description: {
+			fr: "Ecrit en Ocaml, ce projet permet l'interpretation du langage Polish, son évalutaion, sa simplfication et une analyse statique de ses variables. Il est écrit dans un style purement fonctionnel.",
+			en: "Written in Ocaml, this project allows the interpretation of Polish language, its evaluation, its simplification and a static analysis of its variables. It is written in a pure functional style."
+		},
+		techs: [
+			"ocaml"
+		]
+	},
+	{
 		name: "Cochonou-adventures",
 		class: "cochonou-adventures",
 		project_link: "https://github.com/bastiansmn/Cochonou-adventures",
