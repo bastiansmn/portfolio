@@ -186,7 +186,7 @@ export default {
 
 		& > .avatar {
 			aspect-ratio: 1;
-			border-radius: 30px;
+			border-radius: 3vh;
 		}
 
 		& > .presentation__text {

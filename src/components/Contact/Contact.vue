@@ -54,7 +54,7 @@
 					<input
 						required	
 						autocomplete="off"
-						type="text" 
+						type="email" 
 						id="name" 
 						name="name"
 						:placeholder="

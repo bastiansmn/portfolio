@@ -72,11 +72,11 @@ export default {
 	techs: {
 		p1: {
 			fr: "La programmation a commencé à être <span>un hobby</span> pour moi un peu <span>avant d'étudier l'informatique à l'Université</span>. J'essaie toujours de passer au-delà de la syntaxe que le langage me propose et de <span>comprendre ses mécanismes plus complexes</span>. Mes principaux langages de programmation sont axés sur le Web, notamment <span>JavaScript / HTML / CSS</span> et ses frameworks (Vue.JS, SCSS, ...). Pour chaque projet personnel, j'essaie de changer la stack que j'utilise afin de toujours coder avec des technologies actuelles, ou d'en découvrir.",
-			en: "Programming started to be <span>a hobby before I studied computer science at university</span>. I always try to go beyond the syntax that language offers me and <span>to understand its more complex mechanisms</span>. My main programming languages ​​are focused on the Web, in particular <span>JavaScript / HTML / CSS</span> and its frameworks (Vue.JS, SCSS, ...). For each personal project, I try to change the stack I use in order to always code with current technologies, or to discover new ones."
+			en: "Programming started to be <span>a hobby before I studied computer science at university</span>. I always try to go beyond the syntax that language offers me and <span>to understand its more complex mechanisms</span>. My main programming languages are focused on the Web, in particular <span>JavaScript / HTML / CSS</span> and its frameworks (Vue.JS, SCSS, ...). For each personal project, I try to change the stack I use in order to always code with current technologies, or to discover new ones."
 		},
 		p2: {
 			fr:  "Je connais <span>plusieurs paradigmes</span> de programmation comme la <span>Programmation Orientée Objet</span> (Java/Python), la <span>programmation fonctionnelle</span> (Ocaml), d'autres langages bas niveau (C), ... Tous mes projets utilisent <span>Git, donc je maîtrise cet outil</span>. Grâce à mes études et à ma curiosité, j'ai aussi de solides connaissances en Java et Python qui sont les premiers langages que j'ai appris, il y a plus de 3 ans. Je continue encore aujourd'hui de les utiliser pour des projets personnels.",
-			en: "I know <span>several programming paradigms</span> such as <span>Object Oriented Programming</span> (Java / Python), <span>functional programming</span> (Ocaml), other low-level languages ​​(C), ... All my projects use <span>Git, so I master this tool</span>. Thanks to my studies and my curiosity, I also have a solid knowledge of Java and Python which are the first languages ​​I learned, more than 3 years ago. I still continue to use them today for personal projects."
+			en: "I know <span>several programming paradigms</span> such as <span>Object Oriented Programming</span> (Java / Python), <span>functional programming</span> (Ocaml), other low-level languages (C), ... All my projects use <span>Git, so I master this tool</span>. Thanks to my studies and my curiosity, I also have a solid knowledge of Java and Python which are the first languages I learned, more than 3 years ago. I still continue to use them today for personal projects."
 		},
 		h2: {
 			fr: "Mon expérience de programmation",
@@ -122,8 +122,8 @@ export default {
 			en: "Send !"
 		},
 		name: {
-			fr: "Votre nom",
-			en: "Your name"
+			fr: "Votre mail",
+			en: "Your email"
 		},
 		message: {
 			fr: "Ecrivez votre message ici",
