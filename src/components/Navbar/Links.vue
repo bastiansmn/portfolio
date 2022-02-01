@@ -75,7 +75,7 @@ export default {
 			margin-bottom: 70px;
 
 			&.anchor_active:before {
-				transform: translateY(-20px) translateX(130px);
+				display: none;
 			}
 		}
 	}

@@ -33,7 +33,7 @@
 		"></div>
 
 		<!-- TODO : Factor le carroussel dans un component -->
-		<div class="carroussel reveal-ltr">
+		<div class="carroussel">
 			<h1>
 				{{
 					this.getLang
@@ -42,7 +42,29 @@
 				}}
 			</h1>
 
-			<div class="slider" :class="!this.isMobile && 'reveal-btt'" ref="slider">
+			<button 
+				@click="previousSlide()"
+				:disabled="this.currentSlide === 0" 
+				style="left: -10px;">
+				<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+				width="24" height="24"
+				viewBox="0 0 172 172"
+				style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M99.5665,150.5v0c9.5245,0 15.20767,-10.61383 9.92583,-18.54017l-30.6375,-45.95983l30.6375,-45.95983c5.28183,-7.92633 -0.40133,-18.54017 -9.92583,-18.54017v0c-3.98467,0 -7.71133,1.99233 -9.92583,5.3105l-34.15633,51.24167c-3.21067,4.816 -3.21067,11.08683 0,15.90283l34.15633,51.24167c2.2145,3.311 5.94117,5.30333 9.92583,5.30333z"></path></g></g></svg>
+			</button>
+			<button 
+				@click="nextSlide()"
+				:disabled="this.currentSlide === this.work.length - 1" 
+				style="right: -10px;">
+				<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+				width="24" height="24"
+				viewBox="0 0 172 172"
+				style="fill: #000000;">
+				<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M79.6145,21.5v0c-9.5245,0 -15.2005,10.61383 -9.91867,18.54017l30.6375,45.95983l-30.6375,45.95983c-5.28183,7.92633 0.39417,18.54017 9.91867,18.54017v0c3.98467,0 7.71133,-1.99233 9.92583,-5.3105l34.15633,-51.24167c3.21067,-4.816 3.21067,-11.08683 0,-15.90283l-34.15633,-51.24167c-2.2145,-3.311 -5.934,-5.30333 -9.92583,-5.30333z"></path></g></g></svg>
+			</button>
+
+			<div class="slider" ref="slider">
+				
+
 				<div class="projects" ref="projects">
 					<a 
 						:href="proj.project_link"
@@ -105,17 +127,38 @@ export default {
 		...mapGetters(["getLang", "isMobile"]),
 	},
 	methods: {
-		
+		updateScroll() {
+			this.$refs["slider"].scrollTo({
+				left: (this.$refs["projects"].scrollWidth / this.work.length)*(this.currentSlide % this.work.length),
+				top: 0,
+				behavior: "smooth"
+			});
+		},
+		removeAutoscroll() {
+			clearInterval(this.interval);
+		},
+		previousSlide() {
+			this.removeAutoscroll();
+			this.currentSlide = (this.currentSlide - 1) % this.work.length;
+			this.updateScroll();
+		},
+		nextSlide() {
+			this.removeAutoscroll();
+			this.currentSlide = (this.currentSlide + 1) % this.work.length;
+			this.updateScroll();
+		},
 	},
 	mounted() {
 		if (!this.isMobile) {
-			setInterval(_ => {
-				this.$refs["slider"].scrollTo({
-					left: (this.$refs["projects"].scrollWidth / this.work.length)*(this.currentSlide % this.work.length),
-					top: 0,
-					behavior: "smooth"
-				});
-				this.currentSlide++;
+			// TODO : Connecter le scroll du carroussel avec currentSlide
+			const slider = this.$refs["slider"];
+			slider.addEventListener("mousewheel", _ => {
+				clearInterval(this.interval);
+				this.currentSlide = Math.round(slider.scrollLeft / slider.scrollWidth * this.work.length);
+			});
+			this.interval = setInterval(_ => {
+				this.updateScroll();
+				this.currentSlide = (this.currentSlide + 1) % this.work.length;
 			}, 10_000);
 		}
 	},
@@ -123,6 +166,8 @@ export default {
 		return {
 			currentSlide: 0,
 			slideEnabled: true,
+
+			interval: undefined,
 
 			text,
 			work
@@ -137,10 +182,15 @@ export default {
 		margin-top: 50px;
 	}
 
+	.carroussel > button {
+		display: none;
+	}
+
 	.slider {
 		background: rgba(255, 255, 255, .1);
 		backdrop-filter: blur(4px);
 
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -188,6 +238,41 @@ export default {
 @media screen and (min-width: 931px) {
 	.carroussel {
 		height: 70vh;
+		position: relative;
+
+		& > button {
+			outline: none;
+			background: var(--glass);
+			border: none;
+			position: absolute;
+			top: 50%;
+			height: 60px;
+			width: 40px;
+			color: black;
+			z-index: 300;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+			font-size: 25px;
+			cursor: not-allowed;
+			border-radius: 10%;
+
+			&[disabled] g {
+				fill: var(--glass) !important;
+			}
+
+			&:not([disabled]) {
+				background: var(--dark-grey);
+				color: var(--white);
+				cursor: pointer;
+			
+				&:hover {
+					transform: scale(1.1);
+					background: var(--primary);
+				}
+			}
+		}
 	}
 	
 	.slider {

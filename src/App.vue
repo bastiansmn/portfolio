@@ -69,7 +69,7 @@ export default {
 		this.$refs["scrollable_content"].onmousewheel = _ => {
 			!this.observerEnabled && this.setObserver(true);
 		};
-		this.$refs["scrollable_content"].addEventListener("touchmove", $event => {
+		this.$refs["scrollable_content"].addEventListener("touchmove", _ => {
 			!this.observerEnabled && this.setObserver(true);
 		});
 		

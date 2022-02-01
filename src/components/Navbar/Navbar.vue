@@ -60,7 +60,7 @@ export default {
 <style scoped lang="scss">
 @media screen and (max-width: 930px) {
 	.navbar {
-		width: 150px;
+		width: 100vw;
 		height: 100%;
 
 		right: 0;
