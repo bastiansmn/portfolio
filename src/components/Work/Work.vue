@@ -68,7 +68,8 @@
 				<div class="projects" ref="projects">
 					<a 
 						:href="proj.project_link"
-						target="blank"
+						target="_blank"
+						rel="noopener noreferrer"
 						:key="proj.class"
 						v-for="proj in work"
 						class="project"
@@ -157,8 +158,8 @@ export default {
 				this.currentSlide = Math.round(slider.scrollLeft / slider.scrollWidth * this.work.length);
 			});
 			this.interval = setInterval(_ => {
-				this.updateScroll();
 				this.currentSlide = (this.currentSlide + 1) % this.work.length;
+				this.updateScroll();
 			}, 10_000);
 		}
 	},

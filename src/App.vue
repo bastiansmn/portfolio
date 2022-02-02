@@ -21,7 +21,6 @@ import vanillaTilt from "vanilla-tilt";
 import Navbar from "./components/Navbar/Navbar.vue";
 import Home from "./components/Home/Home.vue";
 import {mapActions, mapGetters} from "vuex";
-import setActive from "./utils/function";
 import About from "./components/About/About.vue";
 import Work from "./components/Work/Work.vue";
 import Contact from "./components/Contact/Contact.vue";
@@ -43,20 +42,17 @@ export default {
       const observer = new IntersectionObserver((entries) => {
          entries.forEach(entry => {
             if (entry.isIntersecting) {
-               if (this.observerEnabled) {
-                  location.hash = `#${entry.target.id}`
-                  setActive(entry.target.id);
-               }
+					document.querySelector(`a[href='#${entry.target.id}']`).classList.add("anchor_active");
 					entry.target.classList.add("section_active");
 					if (!this.isMobile) {
 						if (entry.target.id === "home")
 							document.querySelector(".navbar").classList.remove("navbar__background");
 						else
 							document.querySelector(".navbar").classList.add("navbar__background");
-					} else {
-						
 					}
-            }
+            } else {
+					document.querySelector(`a[href='#${entry.target.id}']`).classList.remove("anchor_active");
+				}
          });
       }, {
          threshold: .55
@@ -64,14 +60,6 @@ export default {
       anchors.forEach(anchor => {
          observer.observe(anchor)
       });
-
-		// TODO Utiliser les requestAnimationFrame pour limiter l'appel à setObserver
-		this.$refs["scrollable_content"].onmousewheel = _ => {
-			!this.observerEnabled && this.setObserver(true);
-		};
-		this.$refs["scrollable_content"].addEventListener("touchmove", _ => {
-			!this.observerEnabled && this.setObserver(true);
-		});
 		
 		window.onresize = _ => {
 			if (!this.isMobile && window.innerWidth < 931)

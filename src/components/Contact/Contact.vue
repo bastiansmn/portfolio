@@ -103,6 +103,7 @@
 		<div class="socials reveal-rtl">
 			<a
 				target="_blank"
+				rel="noopener noreferrer"
 				class="social_media"
 				v-for="social in socials"
 				:href="social.link"

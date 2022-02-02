@@ -2,7 +2,7 @@
 	<div class="anchor">
       <a href="#home"
 			:class="this.isMobile && 'mobile'"
-         @click="setActive('home'); setObserver(false);"
+         
       >{{
             this.getLang
                ? text.home.en
@@ -11,7 +11,7 @@
       </a>
       <a href="#about"
 			:class="this.isMobile && 'mobile'"
-         @click="setActive('about'); setObserver(false);"
+         
       >{{
             this.getLang
                   ? text.about.en
@@ -20,7 +20,7 @@
       </a>
       <a href="#work"
 			:class="this.isMobile && 'mobile'"
-         @click="setActive('work'); setObserver(false);"
+         
       >{{
             this.getLang
                   ? text.work.en
@@ -29,7 +29,7 @@
       </a>
       <a href="#contact"
 			:class="this.isMobile && 'mobile'"
-         @click="setActive('contact'); setObserver(false);"
+         
       >{{
             this.getLang
                   ? text.contact.en
@@ -41,7 +41,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import setActive from "../../utils/function.js";
 import text from "../../assets/text.js";
 
 export default {
@@ -50,7 +49,6 @@ export default {
 		
 	},
 	methods: {
-		setActive,
 		...mapActions(["setObserver"])
 	},
 	computed: {

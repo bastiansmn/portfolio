@@ -2,7 +2,6 @@
    <a
          class="continue"
          :href="link"
-         @click="setActive('about')"
    >
       <div class="arrow">
          <div class="background"></div>
@@ -16,7 +15,6 @@
 <script>
 import text from "../../assets/text.js";
 import VerticalScrollAnimation from "./VerticalScrollAnimation.vue";
-import setActive from "../../utils/function.js";
 import {mapGetters} from "vuex";
 
 export default {
@@ -36,9 +34,6 @@ export default {
    computed: {
       ...mapGetters(['getLang'])
    },
-   methods: {
-      setActive
-   }
 }
 </script>
 

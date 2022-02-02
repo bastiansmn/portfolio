@@ -19,7 +19,7 @@ export default {
     introducing: {
         header: {
             fr: "Bonjour, je m'appelle",
-            en: "Hello, me name is"
+            en: "Hello, my name is"
         },
         name: {
             fr: "Bastian Somon",
