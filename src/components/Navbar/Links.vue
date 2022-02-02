@@ -98,7 +98,6 @@ export default {
 
 	& > a {
 		text-decoration: none;
-		width: 66px;
 		color: var(--dark-grey);
 		font-size: 15px;
 		font-weight: bolder;
