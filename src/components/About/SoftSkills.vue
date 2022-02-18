@@ -39,7 +39,7 @@
 						</li>
 						<li>
 							<!-- TODO : Lien vers le CV -->
-							<a target="_blank" href="">
+							<a target="_blank" href="https://drive.google.com/file/d/13vPlPIzVM-W3EUZCQjh_o7Tqv3237M3D/view?usp=sharing">
 								{{
 									this.getLang
 										? text.resume.en
