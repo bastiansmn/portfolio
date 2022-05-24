@@ -23,15 +23,23 @@ export default {
 			classname: "spring"
 		},
 		{
-			name: "FastAPI",
-			classname: "fastapi"
+			name: "ExpressJS",
+			classname: "express"
+		},
+		{
+			name: "JWT",
+			classname: "jwt"
 		}
 	],
 	data: [
 		{
 			name: "MariaDB",
 			classname: "mariadb"
-		}
+		},
+		{
+			name: "PostgreSQL",
+			classname: "postgresql"
+		},
 	],
 	others: [
 		{

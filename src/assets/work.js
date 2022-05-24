@@ -23,6 +23,21 @@ export default [
 		]
 	},
 	{
+		name: "Pizzeria Delapapa",
+		class: "pizzeria_delapapa",
+		project_link: "https://github.com/bastiansmn/pizzeria-delapapa",
+		description: {
+			fr: "La Pizzeria Delapapa est heureuse de vous proposez ses pizzas et son service de livraison. Vous pouvez créer vos pizzas personnalisées, commander un bon choix d'entrées, boissons ou encore menus.",
+			en: "Pizzeria Delapapa is glad to offer you its pizzas and its delivery service. You can create your own pizzas, order a wide range of starters, drinks or even menus.",
+		},
+		techs: [
+			"node",
+			"express",
+			"jwt",
+			"bootstrap"
+		]
+	},
+	{
 		name: "Portfolio 2021",
 		class: "portfolio",
 		project_link: "https://github.com/bastiansmn/portfolio-09-21",
@@ -34,6 +49,19 @@ export default [
 			"vue-js",
 			"js",
 			"scss"
+		]
+	},
+	{
+		name: "Ghostlab",
+		class: "ghostlab",
+		project_link: "https://gitlab.com/SirHenryAllen/ghostlab",
+		description: {
+			fr: "Un jeu de chasse aux fantômes ! Vous devez parcourir un labyrinthe pour  le cartografier et attraper les fantômes pour gagner des points. Le serveur, en C, utilise les protocoles TCP et UDP ainsi que du multicast. L'interface graphique en Java permet de se connecter, le tout géré par des threads.",
+			en: "A game of hunting ghosts! You must navigate a maze to draw it and catch the ghosts to win points. The C server is using TCP and UDP protocols as well as multicast. The graphical interface in Java allows you to connect, everything is handled by threads."
+		},
+		techs: [
+			"java",
+			"c"
 		]
 	},
 	{
@@ -70,18 +98,6 @@ export default [
 		},
 		techs: [
 			"ocaml"
-		]
-	},
-	{
-		name: "Cochonou-adventures",
-		class: "cochonou-adventures",
-		project_link: "https://github.com/bastiansmn/Cochonou-adventures",
-		description: {
-			fr: "Ce jeu est un projet de deuxième année. Nous avons utilisé une modélisation orienté objet qui le rend interessant d'un point de vue technique. Il est jouable en ligne dans un émulateur graphique Java.",
-			en: "This game is university project. We used object oriented modeling which makes it interesting from a technical point of view. It is playable online in a Java graphics emulator."
-		},
-		techs: [
-			"java"
 		]
 	},
 ]
