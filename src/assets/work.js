@@ -9,6 +9,22 @@ export default [
 	// 	} 
 	// },
 	{
+		name: "Moov",
+		class: "moov",
+		project_link: "https://github.com/bastiansmn/moov",
+		description: {
+			fr: "Moov est une application permettant de répertorier les évènements proche de chez soi grâce à la stratégie OpenData des villes de France. L'application se concentre principalement sur un défi achitectural et l'utilisation d'une stack complexe afin de progresser sur des technologies récentes et scalables.",
+			en: "Moov is an application reporting events around you, thanks to the OpenData strategy used by french cities. The app mainly focuses on a architectural challenge and the usage of a complex stack in order to progress on recent technologies that are also scalable."
+		},
+		techs: [
+			"vue-js",
+			"express",
+			"docker",
+			"ts",
+			"postgresql"
+		]
+	},
+	{
 		name: "Discoodle",
 		class: "discoodle",
 		project_link: "https://github.com/bastiansmn/discoodle",

@@ -13,8 +13,8 @@ export default {
 			classname: "scss",
 		},
 		{
-			name: "JavaScript",
-			classname: "js",
+			name: "TypeScript",
+			classname: "ts",
 		}
 	],
 	backend: [
@@ -51,8 +51,8 @@ export default {
 			classname: "python",
 		},
 		{
-			name: "Ocaml",
-			classname: "ocaml"
+			name: "Docker",
+			classname: "docker"
 		},
 		{
 			name: "Java",
