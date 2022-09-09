@@ -225,10 +225,12 @@ export default {
 
 				& > .image {
 					height: 100%;
-					object-fit: cover;
 
 					& > img {
 						border-radius: 6px;
+                  aspect-ratio: 16/9;
+					   object-fit: cover;
+                  height: 100%;
 					}
 				}
 			}
