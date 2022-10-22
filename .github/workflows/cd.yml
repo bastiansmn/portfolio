@@ -14,9 +14,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:    
-    - run: echo ${{ secrets.HOST }}
-    - run: echo ${{ secrets.USERNAME }}
-    - run: echo ${{ secrets.PRIVATE_KEY }}
+    - run: echo "${{ secrets.HOST }}"
+    - run: echo "${{ secrets.USERNAME }}"
+    - run: echo "${{ secrets.PRIVATE_KEY }}"
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
       with:
