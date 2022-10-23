@@ -29,3 +29,4 @@ jobs:
           npm run build
           cp -r dist/* /var/www/html/portfolio/
           cp scripts/send_mail.py /usr/lib/cgi-bin/portfolio/
+          chmod 755 /usr/lib/cgi-bin/portfolio/send_mail.py
