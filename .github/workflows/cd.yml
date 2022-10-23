@@ -30,5 +30,3 @@ jobs:
           cp -r dist/* /var/www/html/portfolio/
           cp scripts/send_mail.py /usr/lib/cgi-bin/portfolio/
           chmod 755 /usr/lib/cgi-bin/portfolio/send_mail.py
-          chown -R www-data:www-data /var/www/html/portfolio
-          chown -R www-data:www-data /usr/lib/cgi-bin/portfolio
