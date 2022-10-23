@@ -25,5 +25,7 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          cd /apps
-          git clone git@github.com:bastiansmn/portfolio.git
+          cd /apps/portfolio
+          npm i
+          npm run build
+          cp -r dist/* /var/www/html/portfolio/
