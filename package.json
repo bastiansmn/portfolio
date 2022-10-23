@@ -9,7 +9,6 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "emailjs-com": "^3.2.0",
     "vanilla-tilt": "^1.7.2",
     "vue": "^3.2.6",
     "vuex": "^4.0.2"

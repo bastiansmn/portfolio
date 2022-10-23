@@ -38,13 +38,12 @@
 						? text.contact_comp.contact_me.en
 						: text.contact_comp.contact_me.fr
 				}}</h1>
-			<form v-if="!this.mailSent" @submit.prevent="submitForm($event)" ref="form">
+			<form v-if="!this.mailSent" @submit.prevent="submitForm()" ref="form">
 				<div class="inputs">
 					<textarea 
 						required
 						autocomplete="off"
 						spellcheck="false"
-						type="text" 
 						id="message"
 						name="message"
 						:placeholder="
@@ -119,8 +118,6 @@
 import { mapGetters } from 'vuex';
 import text from "../../assets/text.js";
 import socials from "../../assets/socials.js";
-import emailjs from 'emailjs-com';
-
 
 export default {
 	name: "Contact",
@@ -132,12 +129,21 @@ export default {
 	},
 	methods: {
 		submitForm() {
-			emailjs.sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, this.$refs["form"], import.meta.env.VITE_USER_ID)
-				.then(_ => {
-						this.mailSent = true;
-				}, (error) => {
-						console.log('FAILED...', error.text);
-				});
+         if (!this.$refs.form[0] || !this.$refs.form[1]) return;
+         const message = {
+            content: this.$refs.form[0].value,
+            from: this.$refs.form[1].value
+         }
+         console.log(message);
+         fetch("/cgi-bin/portfolio/send_mail.py", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json"
+            },
+            body: JSON.stringify(message)
+         })
+               .then(res => res.json())
+               .then(res => console.log(res))
 		},
 	},
 	mounted() {
@@ -235,6 +241,7 @@ export default {
 						outline: none;
 						border: none;
 						color: var(--white);
+                  resize: none;
 					}
 
 					& > input {
@@ -254,8 +261,7 @@ export default {
 			}
 
 			& > .mailSent {
-				width: 100%;
-				--padding: 10px;
+            --padding: 10px;
 				padding: var(--padding);
 				height: calc(100% - 48px - 2*var(--padding));
 				width: calc(100% - 2*var(--padding));
@@ -301,9 +307,8 @@ export default {
 		align-items: center;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
 
-		& > .form {
+      & > .form {
 			width: 80%;
 			max-width: 1000px;
 			height: calc(100% - 100px);
