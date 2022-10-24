@@ -16,10 +16,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 12
+      - name: Use Node.js 16
         uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 16.x
       - run: npm i
       - run: npm run build
       - name: Copy dist files to vps
