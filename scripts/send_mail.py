@@ -5,13 +5,19 @@ import cgitb
 import smtplib
 from email.message import EmailMessage
 from dotenv import dotenv_values
+import re
 
 env = dotenv_values(".env")
 cgitb.enable()
 
 form = cgi.FieldStorage()
 
-if "from" not in form or form.getvalue("from") == "":
+
+def is_mail(str):
+    return re.search(r"^[a-zA-Z\\d._-]+@[a-zA-Z\\d.-]+\\.[a-zA-Z]{2,6}$", str)
+
+
+if "from" not in form or form.getvalue("from") == "" or not is_mail(form.getvalue("from")):
     print("Content-type: */*")
     print("Status: 400 Bad Request")
     print()
