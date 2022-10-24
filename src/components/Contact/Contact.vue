@@ -135,15 +135,16 @@ export default {
             from: this.$refs.form[1].value
          }
          console.log(message);
+         const data = new FormData();
+         data.append("content", message.content);
+         data.append("from", message.from);
          fetch("/cgi-bin/portfolio/send_mail.py", {
             method: "POST",
-            headers: {
-               "Content-Type": "application/json"
-            },
-            body: JSON.stringify(message)
+            body: data
          })
                .then(res => res.text())
                .then(res => console.log(res))
+               .catch(err => alert(err));
 		},
 	},
 	mounted() {
