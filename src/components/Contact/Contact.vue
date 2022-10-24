@@ -142,8 +142,14 @@ export default {
             method: "POST",
             body: data
          })
-               .then(res => res.text())
-               .then(res => console.log(res))
+               .then(res => {
+                  const status = res.status;
+                  if (status !== 204) {
+                     res.text().then(text => {
+                        alert(text);
+                     });
+                  }
+               })
                .catch(err => alert(err));
 		},
 	},
