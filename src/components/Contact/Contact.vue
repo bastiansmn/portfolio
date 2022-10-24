@@ -148,7 +148,9 @@ export default {
                      res.text().then(text => {
                         alert(text);
                      });
+                     return
                   }
+                  this.mailSent = true;
                })
                .catch(err => alert(err));
 		},
