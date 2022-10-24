@@ -95,8 +95,8 @@ export default {
 			fr: "Soft skills"
 		},
 		languages: {
-			en: "Languages",
-			fr: "Langages"
+			en: "Techs",
+			fr: "Technologies"
 		}
 	},
 
