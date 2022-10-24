@@ -14,7 +14,7 @@ form = cgi.FieldStorage()
 
 
 def is_mail(str):
-    return re.search(r"^[a-zA-Z\\d._-]+@[a-zA-Z\\d.-]+\\.[a-zA-Z]{2,6}$", str)
+    return re.search(r"^[a-zA-Z\d._-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,6}$", str)
 
 
 if "from" not in form or form.getvalue("from") == "" or not is_mail(form.getvalue("from")):
