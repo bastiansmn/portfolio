@@ -11,14 +11,14 @@ cgitb.enable()
 
 form = cgi.FieldStorage()
 
-if "from" not in form:
+if "from" not in form or form.getvalue("from") == "":
     print("Content-type: */*")
     print("Status: 400 Bad Request")
     print()
 
     print("Précisez un expéditeur")
     exit(1)
-if "content" not in form:
+if "content" not in form or form.getvalue("content") == "":
     print("Content-type: */*")
     print("Status: 400 Bad Request")
 
