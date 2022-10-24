@@ -135,7 +135,7 @@ export default {
             from: this.$refs.form[1].value
          }
          console.log(message);
-         fetch("/cgi-bin/send_mail.py", {
+         fetch("/cgi-bin/portfolio/send_mail.py", {
             method: "POST",
             headers: {
                "Content-Type": "application/json"

@@ -3,51 +3,46 @@
 import cgi
 import cgitb
 import smtplib
-from env import dotenv_values
 from email.message import EmailMessage
+from dotenv import dotenv_values
 
 env = dotenv_values(".env")
-
 cgitb.enable()
 
 form = cgi.FieldStorage()
 
 if "from" not in form:
-    print("Content-type: text/html")
+    print("Content-type: */*")
     print("Status: 400 Bad Request")
     print()
 
-    print("Aucun expéditeur n'a été spécifié.")
-
+    print("Précisez un expéditeur")
     exit(1)
-
 if "content" not in form:
-    print("Content-type: text/html")
+    print("Content-type: */*")
     print("Status: 400 Bad Request")
+
     print()
 
-    print("Aucun contenu")
-
+    print("Le contenu du mail ne peut pas être vide")
     exit(1)
 
-
-# Send mail
+# Preparing message
 msg = EmailMessage()
-msg.set_content(form.getvalue("content"))
+msg["Subject"] = "Mail du portfolio" if "subject" not in form else form.getvalue("subject")
+msg["To"] = "bastian.somon@gmail.com" if "to" not in form else form.getvalue("to")
+msg["From"] = form.getvalue("from")
+content = form.getvalue("content")
+from_ = form.getvalue("from")
+msg.set_content(f"Message du portfolio:\nDe: {from_}\n{30 * '-'}\n\n{content}")
 
-subject = "Mail du portfolio" if "subject" not in form else form.getvalue("subject")
-msg['Subject'] = subject
-msg['From'] = form.getvalue("from")
-msg['To'] = "bastian.somon@gmail.com"
-
-# Send the message via gmail SMTP server.
-s = smtplib.SMTP('smtp.gmail.com')
-s.ehlo()
-s.starttls()
-s.login(env.get("SMTP_USERNAME"), env.get("SMTP_PASSWORD"))
-s.send_message(msg)
-s.quit()
+# Setting up the SMTP server
+server = smtplib.SMTP("smtp.gmail.com", 587)
+server.ehlo()
+server.starttls()
+server.login(env.get("SMTP_USERNAME"), env.get("SMTP_PASSWORD"))
+server.send_message(msg)
 
 print("Content-type: */*")
-print("Status: 200 OK")
+print("Status: 204 No content")
 print()
