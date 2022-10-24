@@ -35,7 +35,7 @@ if "content" not in form or form.getvalue("content") == "":
 
 # Preparing message
 msg = EmailMessage()
-msg["Subject"] = "Mail du portfolio" if "subject" not in form else form.getvalue("subject")
+msg["Subject"] = "Nouveau mail du portfolio" if "subject" not in form else form.getvalue("subject")
 msg["To"] = "bastian.somon@gmail.com" if "to" not in form else form.getvalue("to")
 msg["From"] = form.getvalue("from")
 content = form.getvalue("content")

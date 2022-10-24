@@ -32,6 +32,16 @@ jobs:
           target: /var/www/html/portfolio
           strip_components: 1
 
+      - name: Copy cgi file to vps
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          source: scripts/send_mail.py
+          target: /usr/lib/cgi-bin
+          strip_components: 1
+
 #    - name: Deploy using ssh
 #      uses: appleboy/ssh-action@master
 #      with:
