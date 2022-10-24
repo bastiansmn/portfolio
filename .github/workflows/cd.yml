@@ -24,6 +24,7 @@ jobs:
         port: 22
         script: |
           cd /tmp
+          rm -rf portfolio
           git clone git@github.com:bastiansmn/portfolio.git
           cd /portfolio
           npm i
