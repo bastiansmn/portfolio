@@ -26,8 +26,8 @@ export default {
             en: "Bastian Somon",
         },
         p: {
-            fr: "J'étudie l'informatique à l'Université de Paris. Je me concentre en particulier sur la programmation et les mathématiques, et j'aime pousser ma compréhension des technologies, ou bien me confronter à de nouvelles.",
-            en: "I study computer science at the University of Paris. I focus in particular on programming and mathematics, and I like to push my understanding of technologies, or to confront myself with new ones."
+            fr: "Je suis développeur full-stack en alternance. Je travail chez Act-On Technology (Paris) et j'étudie à l'Université Paris Cité. Je suis passionné par le développement full-stack et l'algorithmie. Je me concentre principalement sur la programmation and j'apprécie approfondir ma compréhension des technologies des d'en apprendre de nouvelles.",
+            en: "I am a full-stack developer in apprenticeship. I work at Act-On Technology (Paris) and study at the \"University Paris Cité\". I am passionate about full-stack development and algorithmics. I mainly focus on programming and I enjoy deepening my understanding of technologies and learning new ones."
         }
     },
 
