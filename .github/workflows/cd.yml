@@ -1,46 +1,50 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Portfolio CD
 
-# Controls when the action will run. 
-# Triggers the workflow on push or pull request events but only for the master branch
 on: [push]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  build-client:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 16
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-      - run: npm i
-      - run: npm run build
-      - name: Copy dist files to vps
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          source: dist/*
-          target: /var/www/html/portfolio
-          strip_components: 1
+      - uses: actions/checkout@v3
 
-      - name: Copy cgi file to vps
-        uses: appleboy/scp-action@master
+      - name: Login and push to container registry
+        run: |
+          echo ${{ secrets.REGISTRY_PASS }} | docker login registry.bastian-somon.fr -u ${{ secrets.REGISTRY_USER }} --password-stdin
+          docker build -t registry.bastian-somon.fr/portfolio:latest .
+          docker push registry.bastian-somon.fr/portfolio:latest
+
+  deploy-infra:
+    needs: [ build-server, build-client ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Trigger deploy
+        uses: Consensys/kubernetes-action@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          source: scripts/send_mail.py
-          target: /usr/lib/cgi-bin/portfolio
-          strip_components: 1
+          args: apply -k infra/application
+
+  rollout-infra:
+    needs: [ deploy-infra ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Trigger backend rollout
+        uses: Consensys/kubernetes-action@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
+        with:
+          args: rollout restart deployment node -n moov
+      - name: Trigger frontend rollout
+        uses: Consensys/kubernetes-action@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
+        with:
+          args: rollout restart deployment nginx -n moov
 
 #    - name: Deploy using ssh
 #      uses: appleboy/ssh-action@master
