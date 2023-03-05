@@ -15,7 +15,7 @@ jobs:
           docker push registry.bastian-somon.fr/portfolio:latest
 
   deploy-infra:
-    needs: [ build-server, build-client ]
+    needs: [ build-client ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
