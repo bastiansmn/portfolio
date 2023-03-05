@@ -33,18 +33,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Trigger backend rollout
-        uses: Consensys/kubernetes-action@master
-        env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
-        with:
-          args: rollout restart deployment node -n moov
       - name: Trigger frontend rollout
         uses: Consensys/kubernetes-action@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
         with:
-          args: rollout restart deployment nginx -n moov
+          args: rollout restart deployment nginx -n portfolio
 
 #    - name: Deploy using ssh
 #      uses: appleboy/ssh-action@master
