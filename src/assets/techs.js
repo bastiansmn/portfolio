@@ -29,7 +29,11 @@ export default {
 		{
 			name: "JWT",
 			classname: "jwt"
-		}
+		},
+        {
+            name: "Kubernetes",
+            classname: "kubernetes"
+        }
 	],
 	data: [
 		{
