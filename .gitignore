@@ -5,7 +5,6 @@ dist
 *.local
 
 .idea
-package-lock.json
 .vscode
 
 .env
