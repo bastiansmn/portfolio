@@ -5,8 +5,8 @@ export default {
 			classname: "vue-js",
 		},
 		{
-			name: "HTML",
-			classname: "html"
+			name: "Angular",
+			classname: "angular"
 		},
 		{
 			name: "SCSS",

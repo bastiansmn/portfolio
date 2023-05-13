@@ -1,0 +1,57 @@
+name: Portfolio CD
+
+on: [push]
+
+jobs:
+  build-client:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Login and push to container registry
+        run: |
+          echo ${{ secrets.REGISTRY_PASS }} | docker login registry.bastian-somon.fr -u ${{ secrets.REGISTRY_USER }} --password-stdin
+          docker build -t registry.bastian-somon.fr/portfolio:latest .
+          docker push registry.bastian-somon.fr/portfolio:latest
+
+  deploy-infra:
+    needs: [ build-client ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Trigger deploy
+        uses: Consensys/kubernetes-action@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
+        with:
+          args: apply -k infra/application
+
+  rollout-infra:
+    needs: [ deploy-infra ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Trigger frontend rollout
+        uses: Consensys/kubernetes-action@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
+        with:
+          args: rollout restart deployment nginx -n portfolio
+
+#    - name: Deploy using ssh
+#      uses: appleboy/ssh-action@master
+#      with:
+#        host: ${{ secrets.HOST }}
+#        username: ${{ secrets.USERNAME }}
+#        key: ${{ secrets.PRIVATE_KEY }}
+#        port: 22
+#        script: |
+#          cd /apps/portfolio
+#          git pull
+#          npm i
+#          npm run build
+#          cp -r dist/* /var/www/html/portfolio/
+#          cp scripts/send_mail.py /usr/lib/cgi-bin/portfolio/
+#          chmod 755 /usr/lib/cgi-bin/portfolio/send_mail.py
