@@ -37,7 +37,6 @@ export default {
       !"fr-FR".includes(navigator.language) && this.setLang(true);
    },
    mounted() {
-		// TODO : Vérifier la compatibilité avec mobile
       const anchors = document.querySelectorAll('.section');
       const observer = new IntersectionObserver((entries) => {
          entries.forEach(entry => {
