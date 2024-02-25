@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Trigger deploy
-        uses: davi020/kubernetes-action@V1
+        uses: fno/kubernetes-action-no-aws@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
         with:
@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Trigger frontend rollout
-        uses: davi020/kubernetes-action@V1
+        uses: fno/kubernetes-action-no-aws@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBECONFIG }}
         with:
