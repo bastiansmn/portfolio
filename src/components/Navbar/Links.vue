@@ -27,15 +27,6 @@
                   : text.work.fr
          }}
       </a>
-      <a href="#contact"
-			:class="this.isMobile && 'mobile'"
-         
-      >{{
-            this.getLang
-                  ? text.contact.en
-                  : text.contact.fr
-         }}
-      </a>
    </div>
 </template>
 

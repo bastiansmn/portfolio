@@ -9,14 +9,14 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "vanilla-tilt": "^1.7.2",
-    "vue": "^3.2.6",
-    "vuex": "^4.0.2"
+    "vanilla-tilt": "1.7.2",
+    "vue": "3.2.25",
+    "vuex": "4.0.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.6.1",
-    "@vue/compiler-sfc": "^3.2.6",
-    "sass": "^1.43.4",
-    "vite": "^2.9.13"
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/compiler-sfc": "3.2.16",
+    "sass": "1.49.4",
+    "vite": "6.0.7"
   }
 }

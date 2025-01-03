@@ -38,8 +38,7 @@
 							</span>
 						</li>
 						<li>
-							<!-- TODO : Lien vers le CV -->
-							<a target="_blank" href="https://drive.google.com/file/d/13vPlPIzVM-W3EUZCQjh_o7Tqv3237M3D/view?usp=sharing">
+							<a target="_blank" href="https://drive.google.com/file/d/1NPITB52bzIIEpPpx71j9mw44I7cqQgjL/view">
 								{{
 									this.getLang
 										? text.resume.en

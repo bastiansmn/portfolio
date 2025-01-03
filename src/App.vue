@@ -10,9 +10,6 @@
       <div id="work" class="section">
 			<Work />
 		</div>
-      <div id="contact" class="section">
-			<Contact />
-		</div>
    </div>
 </template>
 
@@ -23,15 +20,13 @@ import Home from "./components/Home/Home.vue";
 import {mapActions, mapGetters} from "vuex";
 import About from "./components/About/About.vue";
 import Work from "./components/Work/Work.vue";
-import Contact from "./components/Contact/Contact.vue";
 
 export default {
    components: {
       About,
       Navbar,
       Home,
-		Work,
-		Contact
+		Work
    },
    beforeMount() {
       !"fr-FR".includes(navigator.language) && this.setLang(true);

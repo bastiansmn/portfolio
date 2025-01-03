@@ -4,6 +4,9 @@ kind: Ingress
 metadata:
   name: portfolio-ingress
   namespace: portfolio
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+
 spec:
   ingressClassName: nginx
   rules:
@@ -27,3 +30,8 @@ spec:
                 name: portfolio
                 port:
                   number: 80
+  tls:
+    - hosts:
+        - bastian-somon.fr
+        - '*.bastian-somon.fr'
+      secretName: letsencrypt-tls-cert

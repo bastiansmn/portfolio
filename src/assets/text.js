@@ -26,8 +26,8 @@ export default {
             en: "Bastian Somon",
         },
         p: {
-            fr: "Je suis développeur full-stack en alternance. Je travail chez Act-On Technology (Paris) et j'étudie à l'Université Paris Cité. Je suis passionné par le développement full-stack et l'algorithmie. Je me concentre principalement sur la programmation and j'apprécie approfondir ma compréhension des technologies des d'en apprendre de nouvelles.",
-            en: "I am a full-stack developer in apprenticeship. I work at Act-On Technology (Paris) and study at the \"University Paris Cité\". I am passionate about full-stack development and algorithmics. I mainly focus on programming and I enjoy deepening my understanding of technologies and learning new ones."
+            fr: "Je suis expert technique chez Act-On Technology (Paris), une ESN spécialisée dans l'expertise en développement d'applications full-stack spécifiques et en architecture de systèmes d'informations. Lors de mes études à l'Université de Paris Cité, j'ai vraiment découvert ma passion pour l'ingénieurie informatique et les challenges intellectuels qu'elle induit. Que ça soit dans des domaines comme l'algorithmie, l'architecture de systèmes d'informations ou leur développement, j'ai toujours à coeur d'approfondir ma compréhension des technologies et d'en apprendre de nouvelles.",
+            en: "I am a technical expert at Act-On Technology (Paris), an IT services company specializing in expertise in custom full-stack application development and information systems architecture. During my studies at the University of Paris Cité, I truly discovered my passion for computer engineering and the intellectual challenges it entails. Whether in areas like algorithms, information systems architecture, or their development, I am always eager to deepen my understanding of technologies and learn new ones."
         }
     },
 
@@ -48,8 +48,8 @@ export default {
             en: "My soft skills",
         },
 		text: {
-			fr: "Un de mes points forts est sûrement la vitesse à laquelle je peux apprendre quelque chose de nouveau, que ce soit en informatique ou en mathématique. J'aime aussi résoudre des problèmes complexes. Enfin, le travail en équipe m'attire particulièrement et je sais m'adapter rapidement à des situations inhabituelles.",
-			en: "One of my best soft skill is probably the speed with which I can learn something new, wheather it's in programming or mathematics. I also like to solve complex problems. Finally, working in a team is a must have for me and I know how to adapt to unsual situations."
+			fr: "D'expérience j'ai compris qu'il était inutile de connaître sur le bout des doigts toutes les technologies existantes. De mon point de vue un des soft-skill les plus important est la capacité d'\"apprendre à apprendre\". Ainsi, j'aime découvrir de nouvelles choses et les comprendre, tout autant que de résoudre des problèmes complexes.",
+			en: "From experience, I have come to understand that it is pointless to know every existing technology inside out. In my view, one of the most important soft skills is the ability to \"learn how to learn.\" Thus, I enjoy discovering new things and understanding them, just as much as solving complex problems."
 		},
 		card: {
 			title: {
@@ -71,8 +71,8 @@ export default {
 
 	techs: {
 		p1: {
-			fr: "La programmation a commencé à être <span>un hobby</span> pour moi un peu <span>avant d'étudier l'informatique à l'Université</span>. J'essaie toujours de passer au-delà de la syntaxe que le langage me propose et de <span>comprendre ses mécanismes plus complexes</span>. Mes principaux langages de programmation sont axés sur le Web, notamment <span>JavaScript / HTML / CSS</span> et ses frameworks (Vue.JS, SCSS, ...). Pour chaque projet personnel, j'essaie de changer la stack que j'utilise afin de toujours coder avec des technologies actuelles, ou d'en découvrir.",
-			en: "Programming started to be <span>a hobby before I studied computer science at university</span>. I always try to go beyond the syntax that languages offers me and <span>to understand its more complex mechanisms</span>. My main programming languages are focused on the Web, in particular <span>JavaScript / HTML / CSS</span> and its frameworks (Vue.JS, SCSS, ...). For each personal project, I try to change the stack I use in order to always code with current technologies, or to discover new ones."
+			fr: "La programmation a commencé à être <span>un hobby</span> pour moi un peu <span>avant d'étudier l'informatique à l'Université</span>. J'essaie toujours de passer au-delà de la syntaxe que le langage me propose et de <span>comprendre ses mécanismes plus complexes</span>. Mes principaux langages de programmation sont axés sur le Web, notamment <span>JavaScript / HTML / CSS</span> et ses frameworks (Angular, Vue.JS, SCSS, ...). Pour chaque projet personnel, j'essaie de changer la stack que j'utilise afin de toujours coder avec des technologies actuelles, ou d'en découvrir.",
+			en: "Programming started to be <span>a hobby before I studied computer science at university</span>. I always try to go beyond the syntax that languages offers me and <span>to understand its more complex mechanisms</span>. My main programming languages are focused on the Web, in particular <span>JavaScript / HTML / CSS</span> and its frameworks (Angular, Vue.JS, SCSS, ...). For each personal project, I try to change the stack I use in order to always code with current technologies, or to discover new ones."
 		},
 		p2: {
 			fr:  "Je connais <span>plusieurs paradigmes</span> de programmation comme la <span>Programmation Orientée Objet</span> (Java/Python), la <span>programmation fonctionnelle</span> (Ocaml), d'autres langages bas niveau (C), ... Tous mes projets utilisent <span>Git, donc je maîtrise cet outil</span>. Grâce à mes études et à ma curiosité, j'ai aussi de solides connaissances en Java et Python qui sont les premiers langages que j'ai appris, il y a plus de 3 ans. Je continue encore aujourd'hui de les utiliser pour des projets personnels.",
@@ -111,39 +111,5 @@ export default {
 			en: "Technologies used :"
 		}
 	},
-
-	contact_comp: {
-		contact_me: {
-			fr: "Me contacter !",
-			en: "Contact me !"
-		},
-		send: {
-			fr: "Envoyer !",
-			en: "Send !"
-		},
-		name: {
-			fr: "Votre mail",
-			en: "Your email"
-		},
-		message: {
-			fr: "Ecrivez votre message ici",
-			en: "Write your message here",
-		},
-		description: {
-			fr: "Si vous souhaitez m'envoyer un message, entrez le dans l'encadré et je le recevrai par mail ! Je suis très attentif à mes mails donc je le lirai et y répondrai aussi vite que possible.",
-			en: "If you want to send me a message, enter it in the box and I will receive it by email! I am very attentive to my emails so I will read it and answer it as quickly as possible."
-		}
-	},
-
-	emailed: {
-		h1: {
-			fr: "Merci !",
-			en: "Thanks !"
-		},
-		p: {
-			fr: "J'ai bien reçu votre mail et je vais y répondre dès que possible. Merci de votre intêret pour mon profil et à bientôt j'espère !",
-			en: "I have received your email and will answer it as soon as possible. Thank you for your interest in my profile and I hope to see you soon !"
-		}
-	}
 
 }
